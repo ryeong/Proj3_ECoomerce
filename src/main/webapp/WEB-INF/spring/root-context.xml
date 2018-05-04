@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.2.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+		
+	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
+		<property value="oracle.jdbc.driver.OracleDriver" name="driverClassName"></property>
+		<property value="jdbc:oracle:thin:@localhost:1522:orcl" name="url"></property> 
+		<!-- <property value="jdbc:oracle:thin:@localhost:1521:xe" name="url"></property>  --> 
+		<property value="spring" name="username"></property>
+		<property value="spring" name="password"></property>	
+	</bean>
+	
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory" >
+		<property  ref="dataSource" name="dataSource"></property>
+		<property  value="classpath:/mybatis-config.xml" name="configLocation"></property>
+		<property value="classpath:mapper/**/*Mapper.xml" name="mapperLocations"></property> 
+	</bean>
+	
+	<bean destroy-method="clearCache" id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
+	</bean>
+	
+	<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">
+		<property ref="dataSource" name="dataSource"></property>
+	</bean>
+	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property value="10485760" name="maxUploadSize"></property>	
+	</bean> 
+	 
+	 
+	 
+	 
+	 <context:component-scan base-package="proj.ecom.answer.**" />
+	 <context:component-scan base-package="proj.ecom.question.**" />
+	 <context:component-scan base-package="proj.ecom.cart.**" />
+	 <context:component-scan base-package="proj.ecom.payment.**" />
+	 <context:component-scan base-package="proj.ecom.product.**" />
+	 <context:component-scan base-package="proj.ecom.user.**" />
+	 <context:component-scan base-package="proj.ecom.review.**" />
+	 
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	<tx:annotation-driven/>
+</beans>
