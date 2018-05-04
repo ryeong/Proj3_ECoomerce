@@ -15,12 +15,13 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-
-	<context:component-scan base-package="proj.ecom.user.controller" />
+	
+<!-- 	<context:component-scan base-package="proj.ecom.home.*" />
+ -->	<!-- <context:component-scan base-package="proj.ecom.user.controller" />
 	<context:component-scan base-package="proj.ecom.question.controller" />
 	<context:component-scan base-package="proj.ecom.answer.controller" />
 	<context:component-scan base-package="proj.ecom.product.controller" />
 	<context:component-scan base-package="proj.ecom.payment.controller" />
-	<context:component-scan base-package="proj.ecom.cart.controller" /> 
+	<context:component-scan base-package="proj.ecom.cart.controller" />  -->
 	
 </beans:beans>
