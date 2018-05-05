@@ -16,6 +16,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
+	<context:component-scan base-package="proj.ecom.home" />
 	<context:component-scan base-package="proj.ecom.user.controller" />
 	<context:component-scan base-package="proj.ecom.question.controller" />
 	<context:component-scan base-package="proj.ecom.answer.controller" />
