@@ -15,9 +15,15 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
+<<<<<<< HEAD
 	
 <!-- 	<context:component-scan base-package="proj.ecom.home.*" />
  -->	<!-- <context:component-scan base-package="proj.ecom.user.controller" />
+=======
+
+	<context:component-scan base-package="proj.ecom.home" />
+	<context:component-scan base-package="proj.ecom.user.controller" />
+>>>>>>> 2898ea35f7bc3e7d52867c12514060097f63ec41
 	<context:component-scan base-package="proj.ecom.question.controller" />
 	<context:component-scan base-package="proj.ecom.answer.controller" />
 	<context:component-scan base-package="proj.ecom.product.controller" />
