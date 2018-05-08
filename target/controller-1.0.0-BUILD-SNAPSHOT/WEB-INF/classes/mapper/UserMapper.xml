@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UserMapper">
+
+	<!-- <select id="listDao" resultType="proj.ecom.user.domain.UserDTO">
+		select * from user1
+	</select>
+	
+	<insert id="writeDao">
+		INSERT INTO user1 VALUES (2)
+	</insert>
+	 -->
+	<!-- <delete id="deleteDao">
+		DELETE FROM Mybatis_Bbs WHERE id = #{param1}
+	</delete> -->
+	
+</mapper>
