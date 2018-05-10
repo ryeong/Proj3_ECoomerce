@@ -4,14 +4,14 @@
 
 <mapper namespace="UserMapper">
 
-	<select id="listDao" resultType="proj.ecom.user.domain.UserDTO">
+	<!-- <select id="listDao" resultType="proj.ecom.user.domain.UserDTO">
 		select * from user1
 	</select>
 	
 	<insert id="writeDao">
 		INSERT INTO user1 VALUES (2)
 	</insert>
-	
+	 -->
 	<!-- <delete id="deleteDao">
 		DELETE FROM Mybatis_Bbs WHERE id = #{param1}
 	</delete> -->
