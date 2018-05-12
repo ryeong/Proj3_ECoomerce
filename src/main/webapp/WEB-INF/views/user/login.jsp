@@ -32,7 +32,7 @@
 					<input type="submit" class="btn btn-primary form-control"  value="로그인">
 				</form>
 				
-				<form action="#" method="post" style= "margin-top: 10px;">
+				<form action="user/register" method="get" style= "margin-top: 10px;">
 					<input type="submit" class="btn btn-primary form-control"  value="회원가입">
 				</form> 
 				${id}
