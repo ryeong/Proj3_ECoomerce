@@ -6,11 +6,6 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<!-- 
-			<link rel="stylesheet" href="css/bootstrap.css">
-			<link rel="stylesheet" href="css/custom.css"> 
-			<script src="js/bootstrap.js"></script> 
-		-->
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
@@ -93,6 +88,9 @@
 	</head>
 
 	<body>
+		<c:if test="">
+		
+		</c:if>
 		<div id="container" >
 				<header>
 					<jsp:include page="header.jsp"></jsp:include>

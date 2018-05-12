@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 	<nav id="topMenu" style="text-align:center;" class="navbar navbar-inverse">	
 		<div class="navbar-header" style="vertical-align:botton;">
