@@ -19,5 +19,12 @@ public class UserDAO implements UserDAO_Interface{
 		// TODO Auto-generated method stub
 		sqlSession.insert(NAMESPACE+".insertUser", udto);
 	}
+
+	@Override
+	public UserDTO loginCheck(UserDTO udto) {
+		// TODO Auto-generated method stub
+		UserDTO user_dto = sqlSession.selectOne(NAMESPACE+".selectUser",udto);
+		return user_dto;
+	}
 	
 }
