@@ -10,5 +10,5 @@ public interface UserService_Interface {
 	public void register(UserDTO udto);
 	//아이디 비밀번호 체크
 	public UserDTO loginCheck(UserDTO udto);
-
+	
 }
