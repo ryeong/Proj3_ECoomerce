@@ -98,8 +98,17 @@
 				
 				<div id = "aside">
 					<div id = "loginForm" style = "height: 300px">
-						<jsp:include page="../views/user/login.jsp"></jsp:include>
+						<!-- 기본값: 로그인 하지 않았거나 로그아웃 및 회원탈퇴했을 때 보여지는 페이지-->
+						<c:if test="${login eq null }">
+							<jsp:include page="../views/user/login.jsp"></jsp:include>
+						</c:if>
+						
+						<!-- 로그인 했을 때 보여지는 페이지-->
+						<c:if test="${login ne null }">
+							<jsp:include page="../views/user/loginSuccessView.jsp"></jsp:include>
+						</c:if>
 					</div>
+					
 					
 					 <div id = "sideMenuForm" style = "height: 500px">
 						<jsp:include page="../views/sideMenu.jsp"></jsp:include>
@@ -108,10 +117,14 @@
 				
 				<section>	
 					<!-- 기본값: 아무런 입력도 들어오지 않았을 때-->
-					<jsp:include page="home.jsp"></jsp:include>
+					<c:if test="${content eq null }">
+						<jsp:include page="home.jsp"></jsp:include>
+					</c:if>
 					
 					<!-- 사용자가 어떤 버튼을 누르거나 기능을 요청 했을 때 해당 페이지가 이곳에 출력되야 함 -->
-					<jsp:include page="${content}"></jsp:include>								
+					<c:if test="${content ne null }">
+						<jsp:include page="${content}"></jsp:include>
+					</c:if>								
 				</section>
 	
 				<footer>
