@@ -14,9 +14,9 @@
     <title>Insert title here</title>
     </head>
     <body>
-        <div class="container" style = "width :746px; " >
+        <div class="container" style = "width :946px; " >
             <div id = "topImage">
-            	<img alt="장바구니" src="/resources/image/cart_topTitle01.jpg" style = "width :710px">
+            	<img alt="장바구니" src="/resources/image/cart_topTitle01.jpg" style = "width :910px">
             </div>
             
             <!-- <h3>[장바구니](el태그.수량)</h3> -->
@@ -53,7 +53,7 @@
 	                	<td colspan="2" class = "product_img">
 	                		<input type = "checkbox" value="ddd">
 	                		<a href = "#">
-	                			<img src="" alt="제품 사진" width="100px" height="100px">
+	                			<img src="" alt="제품 사진" width="200px" height="200px">
 	                		</a>
 	                	</td>
 	                	<td colspan="2" class = "product_name">

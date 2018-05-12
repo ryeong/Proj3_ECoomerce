@@ -14,8 +14,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-   <div class="container">
-      <div class="col-lg-8">
+   <div class="container" style = "width :946px; margin: 0 auto;" >
+      <div class="col-lg-12">
          <div class="jumbotron" style="padding-top: 20px;">
             <form method="post" action="/user/register">
                <input type="hidden" name="type" value="0">

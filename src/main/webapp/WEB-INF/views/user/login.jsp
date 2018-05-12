@@ -14,7 +14,7 @@
 
 </head>
 <body>	
-		<div class="col-lg-12" width = "200px">
+		<div class="col-lg-12" width = "400px">
 			<div class="jumbotron" style="padding-top: 20px;">
 				<form method="post" action="user/login">
 					<h3 style="text-align: center;">로그인 화면</h3>
