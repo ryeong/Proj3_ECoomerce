@@ -23,13 +23,15 @@ public class UserController {
 	
 	/*회원 가입 폼*/
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public String registerGet(UserDTO udto) {
-		return "/user/registerView";
+	public String registerGet(UserDTO udto, Model model) {
+		model.addAttribute("content", "../views/user/registerView.jsp");
+		return "main";
 	}
 	
 	/*회원 가입*/
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String registerPost(UserDTO udto) {
+		System.out.println(udto.getUser_pw());
 		userService.register(udto);
 		return "redirect:/";
 		
