@@ -68,14 +68,13 @@
 				float: left;
 			}
 			
-			#section {
-				float: left;
-			}
 			
 			#content {
+				float: left;
 				border: 1px solid black;
-				width: 746px;
-				height: 798px;
+				width: 748px;
+				height: 800px;
+				overflow: auto
 			}
 			
 			footer {
@@ -115,16 +114,16 @@
 					</div> 
 				</div>
 				
-				<section>	
+				<section id = "content">	
 					<!-- 기본값: 아무런 입력도 들어오지 않았을 때-->
 					<c:if test="${content eq null }">
 						<jsp:include page="home.jsp"></jsp:include>
 					</c:if>
 					
 					<!-- 사용자가 어떤 버튼을 누르거나 기능을 요청 했을 때 해당 페이지가 이곳에 출력되야 함 -->
-					<c:if test="${content ne null }">
-						<jsp:include page="${content}"></jsp:include>
-					</c:if>								
+						<c:if test="${content ne null }">
+							<jsp:include page="${content}"></jsp:include>
+						</c:if>							
 				</section>
 	
 				<footer>

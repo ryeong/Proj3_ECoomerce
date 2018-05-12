@@ -13,9 +13,10 @@ public class CartController {
 	@Inject
 	private CartService_Interface cart_service;
 	
-	@RequestMapping("cartList")
+	@RequestMapping("/cartList")
 	public String cartList(String user_id, Model m) {
-		m.addAttribute("cart_list",cart_service.cartList(user_id));
-		return "cart/cartListView";
+		//m.addAttribute("cart_list",cart_service.cartList(user_id));
+		m.addAttribute("content", "../views/cart/cartListView.jsp");
+		return "main";
 	}
 }
