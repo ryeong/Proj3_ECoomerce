@@ -15,5 +15,13 @@
 	<!-- <delete id="deleteDao">
 		DELETE FROM Mybatis_Bbs WHERE id = #{param1}
 	</delete> -->
-	
+	<insert id="insertUser">
+		<![CDATA[
+		insert into ecommerce_user values 
+		(#{user_id},#{user_pw},#{user_name},#{user_type},#{user_birthdate},#{user_gender},#{user_address},#{user_phonenumber})
+		]]>
+	</insert>
+	<select id="selectUser" resultType="proj.ecom.user.domain.UserDTO">
+		select * from ecommerce_user where user_id=#{user_id} and user_pw=#{user_pw}
+	</select>
 </mapper>

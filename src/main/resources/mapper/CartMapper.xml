@@ -4,10 +4,11 @@
 
 <mapper namespace="CartMapper">
 
-	<!-- <select id="listDao" resultType="spring.mybatis.dto.ContentDto">
-		SELECT * FROM Mybatis_Bbs ORDER BY id DESC
+	 <select id="selectCartList" resultType="proj.ecom.cart.domain.CartDTO">
+		SELECT * 
 	</select>
 	
+	<!--
 	<insert id="writeDao">
 		INSERT INTO Mybatis_Bbs (id, writer, content) VALUES (Mybatis_Bbs_SEQ.NEXTVAL, #{param1}, #{param2})
 	</insert>

@@ -16,27 +16,26 @@
 <body>	
 		<div class="col-lg-12" width = "200px">
 			<div class="jumbotron" style="padding-top: 20px;">
-				<form method="post" action="#">
+				<form method="post" action="user/login">
 					<h3 style="text-align: center;">로그인 화면</h3>
 					
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="아이디"
-							name="id" maxlength="10">
+							name="user_id" maxlength="10">
 					</div>
 					
 					<div class="form-group">
 						<input type="password" class="form-control" placeholder="비밀번호"
-							name="pw" maxlength="15">
+							name="user_pw" maxlength="15">
 					</div>
 					
 					<input type="submit" class="btn btn-primary form-control"  value="로그인">
 				</form>
 				
-				<form action="#" method="post" style= "margin-top: 10px;">
+				<form action="/user/register" method="get" style= "margin-top: 10px;">
 					<input type="submit" class="btn btn-primary form-control"  value="회원가입">
 				</form> 
-				${id}
-				${pw }
+
 			</div>
 		</div>
 	
