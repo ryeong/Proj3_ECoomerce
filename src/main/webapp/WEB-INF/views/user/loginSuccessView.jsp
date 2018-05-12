@@ -14,7 +14,7 @@
 		<div>${login.user_name}님환영합니다</div>
 	</div><br>
 
-	<form action="user/logout" method="post">
+	<form action="/user/logout" method="post">
 		<input type="hidden" name="type" value="0">
 		<div class="container" style="display: inline-block;">
 			<span class="btn-group">
