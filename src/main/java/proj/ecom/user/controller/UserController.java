@@ -6,8 +6,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import proj.ecom.user.dao.UserDAO_Interface;
 import proj.ecom.user.domain.UserDTO;
@@ -31,9 +33,22 @@ public class UserController {
 	/*회원 가입*/
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String registerPost(UserDTO udto) {
-		System.out.println(udto.getUser_pw());
+		
 		userService.register(udto);
 		return "redirect:/";
+		
+	}
+	
+	/*로그인*/
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String loginCheck(UserDTO udto,HttpSession session, Model model) {
+		UserDTO user_dto = userService.loginCheck(udto);
+		
+		if(user_dto.getUser_id() != null) {
+			session.setAttribute("login",user_dto);
+		} 
+		return "main" ;
+		
 		
 	}
 	
