@@ -33,8 +33,8 @@
 			}
 			
 			#container {
-				width: 1000px;
-				height: 1000px;
+				width: 1200px;
+				height: 1200px;
 				margin: 0 auto;
 				border: 1px solid black;
 				background-color: #E5E5E5;
@@ -43,7 +43,7 @@
 			
 			header, footer {
 				position: relative;
-				width: 1000px;
+				width: 1200px;
 				height: 100px;
 				border: 1px solid black;
 				border-radius: 5px;
@@ -51,7 +51,7 @@
 			
 			#topMenu {
 				height: 100px;
-				width: 1000px;
+				width: 1200px;
 			}
 			
 			#topMenu ul li {
@@ -63,7 +63,7 @@
 			
 			#aside {
 				width: 250px;
-				height: 800px;
+				height: 1000px;
 				border: 1px solid black;
 				float: left;
 			}
@@ -72,13 +72,13 @@
 			#content {
 				float: left;
 				border: 1px solid black;
-				width: 748px;
-				height: 800px;
+				width: 948px;
+				height: 1000px;
 				overflow: auto
 			}
 			
 			footer {
-				width: 1000px;
+				width: 1200px;
 				height: 100px;
 				clear: left;
 				color: black;

@@ -14,9 +14,9 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-		 <div class="container" style = "width :746px; " >
+		 <div class="container" style = "width :946px; " >
             <div id = "topImage">
-            	<img alt="장바구니" src="/resources/image/cart_topTitle02.jpg" style = "width :710px">
+            	<img alt="장바구니" src="/resources/image/cart_topTitle02.jpg" style = "width :910px">
             </div>
             
             <!-- <h3>[장바구니](el태그.수량)</h3> -->
@@ -64,7 +64,7 @@
               	<c:forEach begin="0" end="10">
 	              	<tr >
 	                	<td colspan="2" class = "product_img">	               
-	                		<img src="" alt="제품 사진" width="100px" height="100px">
+	                		<img src="" alt="제품 사진" width="200px" height="200px">
 	                	</td>
 	                	<td colspan="2" class = "product_name">
 	                		<a href = "#">sdjhsafsafssssssssssssssssssal</a>
@@ -79,7 +79,7 @@
             
             <div id = "tbl_one" style="float: left; margin-top: 20px;  margin-left: 10px;">
 	            <h3>[01.구매자 정보]</h3>
-	            <table class="table table-bordered" style = "width: 300px;">
+	            <table class="table table-bordered" style = "width: 400px;">
 	              <thead>
 	                <tr align="center" class="info">
 	                  <th>주문자</th>
@@ -98,7 +98,7 @@
 	        
 	        <div id = "tbl_two" style="float: right; margin-top: 20px; margin-right: 10px;">
 	            <h3>[02.결제정보]</h3>
-	            <table class="table table-bordered" style = "width: 300px;">
+	            <table class="table table-bordered" style = "width: 400px;">
 	              <thead>
 	                <tr align="center" class="info">
 	                  <th>총 구매금액</th>
