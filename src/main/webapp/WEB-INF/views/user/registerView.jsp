@@ -18,7 +18,6 @@
       <div class="col-lg-8">
          <div class="jumbotron" style="padding-top: 20px;">
             <form method="post" action="/user/register">
-               <input type="hidden" name="type" value="0">
                <h3 style="text-align: center;">회원가입 화면</h3>
                <div class="form-group">
                   <input type="text" class="form-control" placeholder="아이디"

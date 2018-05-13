@@ -29,4 +29,13 @@ public class UserService implements UserService_Interface{
 		return user_dto;
 	}
 
+	@Override
+	public void modify(UserDTO udto) {
+		// TODO Auto-generated method stub
+		System.out.println(udto.getUser_id());
+		System.out.println("1-1");
+		udao.modify(udto);
+		System.out.println("1-2?");
+	}
+
 }

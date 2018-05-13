@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import proj.ecom.user.dao.UserDAO_Interface;
@@ -47,6 +48,10 @@ public class UserController {
 		if(user_dto.getUser_id() != null) {
 			session.setAttribute("login",user_dto);
 		} 
+		System.out.println("login_start!!!!");
+		System.out.println(user_dto.getUser_id());
+		//System.out.println((String) session.getAttribute("user_id"));
+		//System.out.println(user_id);
 		return "main" ;
 		
 		
@@ -62,4 +67,28 @@ public class UserController {
 		
 	}
 	
+	/*회원 수정 폼*/
+	@RequestMapping(value="/modify", method=RequestMethod.GET)
+	public String modifyGet(HttpSession session, Model model, UserDTO udto) {
+
+		
+		model.addAttribute("content","../views/user/modifyView.jsp");
+		model.addAttribute("udto",udto);
+		
+		return "main";
+	}
+	
+	/*회원 수정*/
+	@RequestMapping(value="/modify", method=RequestMethod.POST)
+	public String modifyPost(HttpSession session, Model model,UserDTO udto) {
+		//String user_id;
+		udto=(UserDTO) session.getAttribute("login");
+		//user_id=udto.getUser_id();
+		System.out.println("=-=-=-=-=-=-");
+		System.out.println(udto.getUser_id());
+		userService.modify(udto);
+		
+		return "redirect:/";
+		
+	}
 }

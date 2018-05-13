@@ -24,4 +24,9 @@
 	<select id="selectUser" resultType="proj.ecom.user.domain.UserDTO">
 		select * from ecommerce_user where user_id=#{user_id} and user_pw=#{user_pw}
 	</select>
+	<update id="updateUser">
+		<![CDATA[
+		update ecommerce_user set (user_pw=#{user_pw},user_name=#{user_name},user_gender=#{user_gender},user_address=#{user_address},user_phonenumber=#{user_phonenumber}) where user_id=#{user_id}
+		]]>
+	</update>
 </mapper>

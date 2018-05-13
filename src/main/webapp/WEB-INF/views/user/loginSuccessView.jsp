@@ -20,7 +20,7 @@
 			<span class="btn-group">
 				<button type="submit" class="btn btn-default"
 					style="margin-right: 20px; margin-left: 15px;">로그아웃</button>
-				<button formaction="#" formmethod="post"
+				<button formaction="/user/modify" formmethod="get"
 					type="submit" class="btn btn-default">회원수정</button>
 			</span>
 		</div>

@@ -8,5 +8,7 @@ public interface UserDAO_Interface {
 	public void register(UserDTO udto);
 	//로그인 아이디 비밀번호 체크
 	public UserDTO loginCheck(UserDTO udto);
+	//회원수정
+	public void modify(UserDTO udto);
 
 }
