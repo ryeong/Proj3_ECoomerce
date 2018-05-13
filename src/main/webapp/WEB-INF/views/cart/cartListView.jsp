@@ -36,21 +36,31 @@
               	<c:forEach items="${cart_list}" var="cart_dto">
               		<%-- <tr>       
                             <td colspan="2" class = "product_img">
+                            	<input type = "hidden" value="${cart_id}">
                             	<input type = "checkbox" value="${제품 번호}">
                             	<a href =""><img src="${cart_dto.product_dto.product_img}" alt="제품 사진" width="100px" height="100px"></a>
                             </td>
                             <td colspan="2" class = "product_name"> <a href = "#">${cart_dto.product_dto.product_name}</a></td>
                             <td class = "product_opt">${cart_dto.product_dto.product_size}</td>
                             <td class = "product_price">${cart_dto.product_dto.product_price} 원</td>
-                            <td><input type = "number" value = "${cart_dto.cart_num}" size="3" maxlength="3" class = "product_num"> <button type="button" class="btn btn_modify">변경</button></td> 	
-                            <td class = "product_sum"><script>${cart_dto.cart_price} * ${cart_dto.cart_num}</script>  <button type="button" class="btn btn_delete">삭제</button></td>
+                            <td>
+                            	<input type = "number" size="3" maxlength="3" class = "product_num"> 
+	                			<input type = "hidden" value = "${cart_dto.product_dto.product_id}">
+	                			<button type="button" class="btn btn_modify">변경</button>
+                            </td> 	
+                            <td class = "product_sum">
+	                            <script>${cart_dto.cart_price} * ${cart_dto.cart_num}</script>  
+	                            <input type = "hidden" value = "cart_id">
+		                		<button type="button" class="btn btn_delete">삭제</button>
+                            </td>
                 	</tr> --%>
               	</c:forEach>
               	
               	<!-- 연습용 코드 -->
-              	<c:forEach begin="0" end="10">
+              	<c:forEach begin="0" end="10" varStatus="status">	              
 	              	<tr >
 	                	<td colspan="2" class = "product_img">
+	                		<input type = "hidden" name ="cart_id" value="${status.index}">
 	                		<input class = "checkbox" type = "checkbox" value="ddd">
 	                		<a href = "#">
 	                			<img src="" alt="제품 사진" width="200px" height="200px">
@@ -60,29 +70,51 @@
 	                		<a href = "#">sdjhsafsafssssssssssssssssssal</a>
 	                	</td>
 	                	<td class = "product_opt">250</td>
-	                	<td class = "product_price">2000 원</td>
-	                	<td><input type = "number" value = "1" size="3" maxlength="3" class = "product_num"> <button type="button" class="btn btn_modify">변경</button></td> 	
-	                	<td class = "product_sum">가격 * 수량  <button type="button" class="btn btn_delete">삭제</button></td>
+	                	<td class = "product_price">2000 원</td>	              
+	                	<td>
+	                		<input type = "number" name = "product_num" value = "${status.index}" size="3" maxlength="3" class = "product_num"> 
+	                		<input type = "hidden" name = "product_id" value = "11111">
+	                		<button type="button" class="btn btn_modify">변경</button>
+	                	</td> 	
+	                	
+	                	<td class = "product_sum">
+	                		가격 * 수량  
+	                		<input type = "hidden" name = "cart_id" value = "cart_id">
+	                		<button type="button" class="btn btn_delete">삭제</button>
+	                	</td>
 	                </tr>
+	                
                 </c:forEach>            
             </table>
-            <form action = "/payment/orderProduct">
-            	<button type="submit" class="btn btn-danger btn_order">결제하기</button>
+            <form>
+            	<button type="button" class="btn btn-danger btn_order">결제하기</button>
             </form>
                   
           </div>
           
           <script>
-            $("btn_modify").on("click",function (event) {
-                $.ajax
+            $(".btn_modify").on("click",function (event) {          	
+            	var product_id = $(this).prev().val();
+            	var product_num = $(this).prev().prev().val();
+                console.log(product_id);
+                console.log(product_num);
+            	//$.ajax
             });
 
-            $("btn_delete").on("click",function (event) {
-                
+            $(".btn_delete").on("click",function (event) {
+                var cart_id = $(this).prev().val();
+                console.log(cart_id);
             });
             
-			$("btn_order").on("click",function (event) {
-                
+			$(".btn_order").on("click",function (event) {
+                $(".checkbox").each(function(){
+                	var checkbox = $(this);
+                	var $form = $("form"); 
+                	if(checkbox.is(":checked")){               		              
+                		console.log(checkbox.prev().val());
+                		console.log($form.append(checkbox.prev().serialize()));
+                	} 
+                });
             });
 			
 			$("#allCheck").change(function(){
