@@ -19,15 +19,11 @@ public class Test {
 	
 	@org.junit.Test
 	public void test() {
-<<<<<<< HEAD
 		try {
 			datasSource.getConnection();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-=======
-		
->>>>>>> e1536a2a556232a337f703b3f9efaeec6687fe3d
 	}
 }
