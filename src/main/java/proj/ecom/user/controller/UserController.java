@@ -48,8 +48,6 @@ public class UserController {
 		if(user_dto.getUser_id() != null) {
 			session.setAttribute("login",user_dto);
 		} 
-		System.out.println("login_start!!!!");
-		System.out.println(user_dto.getUser_id());
 		//System.out.println((String) session.getAttribute("user_id"));
 		//System.out.println(user_id);
 		return "main" ;
@@ -69,11 +67,11 @@ public class UserController {
 	
 	/*회원 수정 폼*/
 	@RequestMapping(value="/modify", method=RequestMethod.GET)
-	public String modifyGet(HttpSession session, Model model, UserDTO udto) {
-
+	public String modifyGet(HttpSession session, Model model) {
 		
+		model.addAttribute("login1", userService.selectUser((UserDTO) session.getAttribute("login")));
 		model.addAttribute("content","../views/user/modifyView.jsp");
-		model.addAttribute("udto",udto);
+		//model.addAttribute("session",session.getAttribute("login"));
 		
 		return "main";
 	}
@@ -81,13 +79,9 @@ public class UserController {
 	/*회원 수정*/
 	@RequestMapping(value="/modify", method=RequestMethod.POST)
 	public String modifyPost(HttpSession session, Model model,UserDTO udto) {
-		//String user_id;
-		udto=(UserDTO) session.getAttribute("login");
-		//user_id=udto.getUser_id();
-		System.out.println("=-=-=-=-=-=-");
-		System.out.println(udto.getUser_id());
-		userService.modify(udto);
 		
+		userService.modify(udto);
+		session.setAttribute("login", udto);
 		return "redirect:/";
 		
 	}
