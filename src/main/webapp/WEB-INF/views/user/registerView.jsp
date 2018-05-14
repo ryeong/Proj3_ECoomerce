@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -18,7 +18,6 @@
       <div class="col-lg-12">
          <div class="jumbotron" style="padding-top: 20px;">
             <form method="post" action="/user/register">
-               <input type="hidden" name="type" value="0">
                <h3 style="text-align: center;">회원가입 화면</h3>
                <div class="form-group">
                   <input type="text" class="form-control" placeholder="아이디"

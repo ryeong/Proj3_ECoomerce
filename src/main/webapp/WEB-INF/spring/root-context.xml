@@ -16,10 +16,10 @@
 		
 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
 		<property value="oracle.jdbc.driver.OracleDriver" name="driverClassName"></property>
-		<property value="jdbc:oracle:thin:@localhost:1522:orcl" name="url"></property> 
-		<!-- <property value="jdbc:oracle:thin:@localhost:1521:xe" name="url"></property>  --> 
-		<property value="spring" name="username"></property>
-		<property value="spring" name="password"></property>	
+		<!-- <property value="jdbc:oracle:thin:@localhost:1522:orcl" name="url"></property>  -->
+		<property value="jdbc:oracle:thin:@211.183.7.23:1522:orcl" name="url"></property>
+		<property value="proj" name="username"></property>
+		<property value="proj" name="password"></property>	
 	</bean>
 	
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory" >
@@ -50,6 +50,7 @@
 	 <context:component-scan base-package="proj.ecom.product.**" />
 	 <context:component-scan base-package="proj.ecom.user.**" />
 	 <context:component-scan base-package="proj.ecom.review.**" />
+	 <context:component-scan base-package="proj.ecom.util.*" />
 	 
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	<tx:annotation-driven/>

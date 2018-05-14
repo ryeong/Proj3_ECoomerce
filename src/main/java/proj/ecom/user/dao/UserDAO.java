@@ -30,15 +30,15 @@ public class UserDAO implements UserDAO_Interface{
 	@Override
 	public void modify(UserDTO udto) {
 		// TODO Auto-generated method stub
-		System.out.println(udto.getUser_id());
-		System.out.println("++++++++++");
-		System.out.println(udto.getUser_name());
-		System.out.println("2-1");
 		sqlSession.update(NAMESPACE+".updateUser", udto);
-		System.out.println("2-2?");
-		System.out.println("---------");
-		System.out.println(udto.getUser_name());
+	}
+
+	@Override
+	public UserDTO selectUser(UserDTO udto) {
+		// TODO Auto-generated method stub
 		
+		UserDTO user_dto = sqlSession.selectOne(NAMESPACE+".selectModify", udto);
+		return user_dto;
 	}
 	
 }

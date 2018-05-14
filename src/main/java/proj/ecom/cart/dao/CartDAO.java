@@ -1,6 +1,7 @@
 package proj.ecom.cart.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -18,5 +19,15 @@ public class CartDAO implements CartDAO_Interface{
 	
 	public List<CartDTO> cartList(String user_id) {
 		return sqlSession.selectList(NAMESPACE + ".",user_id);
+	}
+
+	@Override
+	public void modifyCart(Map<String, Object> map) {
+		sqlSession.update(NAMESPACE + ".updateCart",map);
+	}
+	
+	@Override
+	public void deleteCart(Map<String, Object> map) {
+		sqlSession.update(NAMESPACE + ".deleteCart",map);
 	}
 }
