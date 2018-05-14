@@ -26,7 +26,8 @@ public class ProductDAO implements ProductDAO_Interface{
 		map.put("product_itemType", product_itemType);
 		map.put("product_sortType", product_sortType);
 		map.put("cri", cri);
-		System.out.println(map.get("product_itemType"));
+		System.out.println("product_itemType dao " + product_itemType);
+		System.out.println("product_sortType dao " + product_sortType);
 		
 		return sqlSession.selectList(NAMESPACE+".listProduct", map);
 	}

@@ -26,7 +26,9 @@ public class ProductService implements ProductService_Interface{
 
 	@Override
 	public List<ProductDTO> listProduct(int product_itemType, int product_sortType, Criteria cri) {
-		// TODO Auto-generated method stub
+		System.out.println("product_itemType service "+product_itemType);
+		System.out.println("product_sortType service "+product_sortType);
+
 		return productDao.listProduct(product_itemType, product_sortType, cri);
 	}
 
