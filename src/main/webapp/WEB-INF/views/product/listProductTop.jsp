@@ -14,50 +14,60 @@
  <title>Insert title here</title>
 <style>
 
-/* #product_img{
+ #img{
 		width:200px;
-	} */
+	}
 </style>
     </head>
 <body>
 <h1>상품 상의</h1>
-<!-- 상품 상의 전체 목록-->
-		<c:forEach items="${list}" var="productDTO">
+<div class="container">
+		<div class="row">
+			<h1>검색 목록</h1>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>제품번호</th>
+						<th>제품이미지</th>
+						<th>제품이름</th>
+						<th>제품가격</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<c:forEach items="${list}" var="productDTO">
+						<tr>
+							<td>${productDTO.product_id}</td>
+							<td><a href="#">${productDTO.product_image}</a></td>
+							<td>${productDTO.product_name}</td>
+							<td>${productDTO.product_price}</td>
+						</tr>
+						
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+
+
+<%-- <!-- 상품 상의 전체 목록-->
+
+		<c:forEach items="${list}" var="product">
   			<div class="container-fluid">
 			  <div class="row">
-			    <div class="col-sm-3" style="background-color:white;">
-			    	<div><img id = "product_img" alt="${productDTO.product_name}" src="${productDTO.product_image}"></div>
-			    	<div>${productDTO.product_name}</div> 
-			    	<div>${productDTO.product_price}</div> 
-			    	<%-- <div>${productListTop.product_itemType}</div>
-			    	<div>${productListTop.product_sortType}</div> --%>
+			    <div class="col-sm-3" style="background-color:lavender;">
+			    	<div><img id = "img" alt="${product.product_name}" src="//melted.co.kr/web/product/small/201804/5999_shop1_497844.gif"></div>
+			    	<div>${product.product_name}</div> 
+			    	<div>${product.product_price}</div> 
+			    	<div>${productListTop.product_itemType}</div>
+			    	<div>${productListTop.product_sortType}</div>
 			    </div> 
 			  </div>
 		</div>
-		</c:forEach>
+		</c:forEach> --%>
 		
-	<%-- 	
-		<div class="row text-center">
-			<ul class="pagination">
-			
-				<c:if test="${pm.cri.page>1}">
-					<li><a href="/product/listProduct?product_Type=${product_itemType}&product_sortType=${product_sortType}
-					&page=${pm.cri.page-1}&perPage=${pm.cri.perPage}">&laquo;</a></li>
-				</c:if>
-			
-				<c:forEach var="idx" begin="${pm.startPageNum}" end="${pm.endPageNum}">
-					<li class="${idx==pm.cri.page?'active':''}"> 
-						<a href="/product/listProduct?product_Type=${product_itemType}&product_sortType=${product_sortType}
-						&page=${idx}&perPage=${pm.cri.perPage}">${idx}<br></a>
-					</li>
-				</c:forEach>
-				
-				<c:if test="${pm.cri.page<pm.totalPage}">
-					<li><a href="/product/listProduct?product_Type=${product_itemType}&product_sortType=${product_sortType}
-					&page=${pm.cri.page+1}&perPage=${pm.cri.perPage}">&raquo;</a></li>
-				</c:if>
-			</ul>
-		</div> --%>
+	
 
 </body>
 </html>

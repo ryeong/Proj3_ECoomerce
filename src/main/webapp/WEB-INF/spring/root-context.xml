@@ -17,9 +17,9 @@
 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
 		<property value="oracle.jdbc.driver.OracleDriver" name="driverClassName"></property>
 		<!-- <property value="jdbc:oracle:thin:@localhost:1522:orcl" name="url"></property>  -->
-		<property value="jdbc:oracle:thin:@localhost:1521:xe" name="url"></property>
-		<property value="ca" name="username"></property>
-		<property value="ca" name="password"></property>	
+		<property value="jdbc:log4jdbc:oracle:thin:@211.183.7.23:1522:orcl" name="url"></property>
+		<property value="proj" name="username"></property>
+		<property value="proj" name="password"></property>	
 	</bean>
 	
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory" >
