@@ -12,5 +12,7 @@ public interface UserDAO_Interface {
 	public void modify(UserDTO udto);
 	//수정한 회원의 정보 가져오기
 	public UserDTO selectUser(UserDTO udto);
+	//회원 탈퇴
+	public void delete(UserDTO udto);
 
 }
