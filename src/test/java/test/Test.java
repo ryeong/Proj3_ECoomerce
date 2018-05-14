@@ -15,14 +15,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(locations= {"file:src/main/webapp/WEB-INF/spring/**/*.xml"})
 public class Test {
 	@Inject
-	private DataSource datasSource;
+	private DataSource dataSource;
 	
 	@org.junit.Test
 	public void test() {
 		try {
-			datasSource.getConnection();
+			dataSource.getConnection();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
