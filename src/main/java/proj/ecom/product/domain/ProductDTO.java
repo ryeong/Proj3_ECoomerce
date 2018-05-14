@@ -2,6 +2,7 @@ package proj.ecom.product.domain;
 
 import java.io.Serializable;
 
+
 import java.io.Serializable;
 
 public class ProductDTO implements Serializable {
