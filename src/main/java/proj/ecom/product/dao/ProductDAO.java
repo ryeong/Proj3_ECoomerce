@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+
 import proj.ecom.product.domain.ProductDTO;
 import proj.ecom.util.Criteria;
 
@@ -32,10 +33,13 @@ public class ProductDAO implements ProductDAO_Interface{
 		return sqlSession.selectList(NAMESPACE+".listProduct", map);
 	}
 
+	@Override
+	public List<ProductDTO> productDetail( int product_id, Criteria cri) {
+		Map<String, Object> map = new HashMap<String, Object>();
 
-
-	public List<ProductDTO> productDetail(int product_id) {
+		map.put("product_id", product_id);
+		map.put("cri", cri);
 		
-		return sqlSession.selectList(NAMESPACE+".productDetail", product_id);
+		return sqlSession.selectList(NAMESPACE+".productDetail", map);
 	}
 }

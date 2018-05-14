@@ -5,7 +5,14 @@
 <mapper namespace="ProductMapper">
 	<!-- 수정 완료 -->
 	<select id="listProduct" resultType="proj.ecom.product.domain.ProductDTO">
-		select * from ecommerce_product
+		select * from ecommerce_product  where product_itemType=#{product_itemType} and product_sortType=#{product_sortType}
+		and product_size='S'
+	</select>
+	
+	<!-- 상품 자세히 보기 -->
+	<select id="productDetail" resultType="proj.ecom.product.domain.ProductDTO">
+
+		select * from ecommerce_product where product_id=#{product_id}
 	</select>
 
 <!-- 	<select id="listDao" resultType="spring.mybatis.dto.ContentDto">

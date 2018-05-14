@@ -36,12 +36,22 @@
 				
 				<tbody>
 					<c:forEach items="${list}" var="productDTO">
+			
 						<tr>
 							<td>${productDTO.product_id}</td>
-							<td><a href="#">${productDTO.product_image}</a></td>
+							
+							<td><form action="/product/productDetail"> 
+			 				 <%-- <input type="hidden" name="product_size" value="${productDTO.product_size}"> --%>
+			 				 <input type="hidden" name="product_id" value="${productDTO.product_id}">
+							 <img src="${productDTO.product_image}" name="${productDTO.product_image}">
+							 <input type="submit" src="${productDTO.product_image}" value="이미지">
+							</form></td>
+							
+							
 							<td>${productDTO.product_name}</td>
 							<td>${productDTO.product_price}</td>
 						</tr>
+						
 						
 					</c:forEach>
 				</tbody>
@@ -66,6 +76,34 @@
 			  </div>
 		</div>
 		</c:forEach> --%>
+		
+		
+		<!-- 페이징 처리 -->
+		전체 게시글의 수 ${pm.startPageNum}<br>
+		시작 페이지 ${pm.startPageNum}<br>
+		끝 페이지 ${pm.endPageNum}<br>
+		총 몇페이지가 필요한지 ${pm.totalPage}<br>
+		한 페이지 ${pm.cri.page}<br>
+		한 페이지 당 몇 개 글  ${pm.cri.perPage}<br>
+		
+		<div class="row text-center">
+			<ul class="pagination">
+				<c:if test="${pm.cri.page>1}">
+					<li><a href="/product/listProductTop?product_itemType=1&product_sortType=0&page=${pm.cri.page-1}&perPage=${pm.cri.perPage}">&laquo;</a></li>
+				</c:if>
+			
+			
+				<c:forEach var="idx" begin="${pm.startPageNum}" end="${pm.endPageNum}">
+					<li class="${idx==pm.cri.page?'active':''}"> 
+						<a href="/product/listProductTop?product_itemType=1&product_sortType=0?page=${idx}&perPage=${pm.cri.perPage}">${idx}<br></a>
+					</li>
+				</c:forEach>
+				
+				<c:if test="${pm.cri.page<pm.totalPage}">
+					<li><a href="/product/listProductTop?product_itemType=1&product_sortType=0?page=${pm.cri.page+1}&perPage=${pm.cri.perPage}">&raquo;</a></li>
+				</c:if>
+			</ul>
+		</div>
 		
 	
 

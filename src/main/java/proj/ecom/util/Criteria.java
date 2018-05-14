@@ -8,7 +8,8 @@ public class Criteria { //PageTO와 비슷한 기능. 페이징 처리를 위해
 	
 	public Criteria() {
 		page=1;
-		perPage=10;
+		perPage=8;
+		//10에서 8로 수정
 		
 	}
 
