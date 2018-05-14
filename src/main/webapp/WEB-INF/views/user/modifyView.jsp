@@ -36,7 +36,9 @@
                </div>
                <input type="submit" class="btn btn-primary form-control"  value="수정 완료" >
             </form>
-
+			<form action="/user/delete" method="post">
+               <input type="submit" class="btn btn-primaty form-control" value="회원 탈퇴">
+            </form>
          </div>
       </div>
    </div>

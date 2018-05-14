@@ -18,4 +18,7 @@
 	<select id="selectModify" resultType="proj.ecom.user.domain.UserDTO">
 		select * from ecommerce_user where user_id=#{user_id}
 	</select>
+	<delete id="deleteUser">
+		delete from ecommerce_user where user_id=#{user_id}
+	</delete>
 </mapper>
