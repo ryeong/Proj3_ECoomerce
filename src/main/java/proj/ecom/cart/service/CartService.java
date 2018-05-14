@@ -1,6 +1,7 @@
 package proj.ecom.cart.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -17,5 +18,15 @@ public class CartService implements CartService_Interface{
 	@Override
 	public List<CartDTO> cartList(String user_id) {
 		return cart_dao.cartList(user_id);
+	}
+
+	@Override
+	public void modifyCart(Map<String, Object> map) {
+		cart_dao.modifyCart(map);
+	}
+	
+	@Override
+	public void deleteCart(Map<String, Object> map) {
+		cart_dao.deleteCart(map);	
 	}
 }
