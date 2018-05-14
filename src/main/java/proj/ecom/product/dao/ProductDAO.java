@@ -42,4 +42,9 @@ public class ProductDAO implements ProductDAO_Interface{
 		
 		return sqlSession.selectList(NAMESPACE+".productDetail", map);
 	}
+
+	public ProductDTO productQuantityCheck(int product_id) {
+		
+		return sqlSession.selectOne(NAMESPACE+".productQuantityCheck", product_id);
+	}
 }

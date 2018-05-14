@@ -31,11 +31,11 @@
 		<div class="row">
 			<div class="form-group">
 				<label for="title">상품 이미지</label>
-				<input readonly="readonly" class="form-control" name="image" value="${productDtoList.productDTO.product_image}" id="image">
+				<input readonly="readonly" class="form-control" name="image" value="${productDtoList.ProductDTO.product_image}" id="image">
 			</div>
 			<div class="form-group">
 				<label for="writer">상품 이름</label>
-				<input readonly="readonly" class="form-control" name="name" value="${productDtoList.productDTO.product_name}" id="name">
+				<input readonly="readonly" class="form-control" name="name" value="${productDtoList.ProductDTO.product_name}" id="name">
 			</div>
 					
 			
@@ -44,12 +44,38 @@
 				<input readonly="readonly" class="form-control" name="price" value="${productDtoList.ProductDTO.product_price}" id="price">
 			</div>
 			
+		<form action = "#" method = "post" style="clear: right; margin-top: 10px;">
+			<input type = "hidden" name ="product_id" value = "${productDtoList.ProductDTO.product_id}">
 			
-			<div class="form-group">
-				<label for="content">상품 수량</label>
-				<input readonly="readonly" class="form-control" name="quantity" value="${productDtoList.productDTO.product_quantity}" id="quantity">
+			<div >
+				<b>친구목록</b> 
+				<select name = "produt_id" style="width: 100px;">
+					<c:forEach items="${productDTOCheck}" var="prodDTO">
+					
+					<!-- c:if문 써줘야? ajax써줘야?-->
+						<option >상품 사이즈:${prodDTO.product_size}/상품수량:${prodDTO.product_quantity}</option>
+					</c:forEach>
+				</select>
+				<button type="submit" class="btn btn-default">
+		      		<span class="glyphicon glyphicon-check"></span> 이동
+		    	</button>
 			</div>
+		</form>	
+		
 			
+		<%-- 
+			
+			<form action ="" method="post">
+			<div class="form-group">
+				<input type = "hidden" name="product_id" value="${productDtoList.ProductDTO.product_id}">
+				<button type="submit" class="btn btn-default" style="margin-left: 150px;">
+			      		<span class="glyphicon glyphicon-search"></span> ID찾기
+			    </button>
+				<label for="content">상품 수량</label>
+				<input readonly="readonly" class="form-control" name="quantity" value="${productDtoList.ProductDTO.product_quantity}" id="quantity">
+			</div>
+			</form>
+ --%>			
 			<c:forEach items="${productDtoList}" var="productDtoList">
 			<div class="form-group">
 				<label for="content">상품 사이즈</label>

@@ -36,5 +36,11 @@ public class ProductService implements ProductService_Interface{
 		return productDao.productDetail( product_id, cri);
 	}
 
+	@Override
+	public ProductDTO productQuantityCheck(int product_id) {
+		
+		return productDao.productQuantityCheck(product_id);
+	}
+
 
 }

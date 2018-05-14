@@ -13,5 +13,6 @@ public interface ProductService_Interface {
 	
 	//상품 자세히 보기
 	List<ProductDTO> productDetail(int product_id, Criteria cri);
+	ProductDTO productQuantityCheck(int product_id);
 	
 }
