@@ -8,6 +8,14 @@
 		SELECT * 
 	</select>
 	
+	<update id="modifyCart">
+		update ecommerce_cart set cart_product_num = #{product_num} where cart_user_id = #{user_id} and cart_id = #{cart_id}
+	</update>
+	
+	<delete id="deleteCart">
+		delete from ecommerce_cart where cart_user_id = #{user_id} and cart_id = #{cart_id}
+	</delete>
+	
 	<!--
 	<insert id="writeDao">
 		INSERT INTO Mybatis_Bbs (id, writer, content) VALUES (Mybatis_Bbs_SEQ.NEXTVAL, #{param1}, #{param2})
