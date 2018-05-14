@@ -41,4 +41,10 @@ public class UserService implements UserService_Interface{
 		return user_dto;
 	}
 
+	@Override
+	public void delete(UserDTO udto) {
+		// TODO Auto-generated method stub
+		udao.delete(udto);
+	}
+
 }

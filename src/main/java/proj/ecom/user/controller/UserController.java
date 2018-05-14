@@ -85,4 +85,15 @@ public class UserController {
 		return "redirect:/";
 		
 	}
+	
+	/*회원 탈퇴*/
+	@RequestMapping(value="/delete", method=RequestMethod.POST)
+	public String delete(HttpSession session,UserDTO udto) {
+		System.out.println("탈퇴");
+		System.out.println((UserDTO)session.getAttribute("login"));
+		userService.delete((UserDTO)session.getAttribute("login"));
+		session.removeAttribute("login");
+		session.invalidate();
+		return "main";
+	}
 }
