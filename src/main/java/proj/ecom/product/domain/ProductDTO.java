@@ -13,8 +13,7 @@ public class ProductDTO implements Serializable {
 	public ProductDTO() {
 		
 	}
-	
-	
+
 	
 	public ProductDTO(int product_id, String product_type, String product_name, int product_price) {
 		super();

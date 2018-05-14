@@ -2,24 +2,22 @@ package proj.ecom.cart.domain;
 
 import proj.ecom.product.domain.ProductDTO;
 
-public class CartDTO {
+public class CartDTO extends ProductDTO{
+	private static final long serialVersionUID = 1L;
 	private String cart_id;
 	private String cart_userId;
 	private int cart_Status;
-	private ProductDTO product_dto;
 	
 	
 	public CartDTO() {
 		super();
 	}
 	
-	
-	public CartDTO(String cart_id, String cart_userId, int cart_Status, ProductDTO product_dto) {
+	public CartDTO(String cart_id, String cart_userId, int cart_Status) {
 		super();
 		this.cart_id = cart_id;
 		this.cart_userId = cart_userId;
 		this.cart_Status = cart_Status;
-		this.product_dto = product_dto;
 	}
 
 
@@ -41,12 +39,8 @@ public class CartDTO {
 	public void setCart_Status(int cart_Status) {
 		this.cart_Status = cart_Status;
 	}
-	public ProductDTO getProduct_dto() {
-		return product_dto;
-	}
-	public void setProduct_dto(ProductDTO product_dto) {
-		this.product_dto = product_dto;
-	}
-	
-	
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}	
 }
