@@ -73,7 +73,7 @@
 	                	<td class = "product_price">2000 원</td>	              
 	                	<td>
 	                		<input type = "number" name = "product_num" value = "${status.index}" size="3" maxlength="3" class = "product_num"> 
-	                		<input type = "hidden" name = "product_id" value = "11111">
+	                		<input type = "hidden" name = "cart_id" value = "11111">
 	                		<button type="button" class="btn btn_modify">변경</button>
 	                	</td> 	
 	                	
@@ -93,17 +93,45 @@
           </div>
           
           <script>
-            $(".btn_modify").on("click",function (event) {          	
-            	var product_id = $(this).prev().val();
-            	var product_num = $(this).prev().prev().val();
-                console.log(product_id);
-                console.log(product_num);
-            	//$.ajax
+            $(".btn_modify").on("click",function (event) {          	        
+            	/*console.log(product_id);
+                console.log(product_num); */
+                
+                $.ajax({
+    				type: "post",
+    				url: "/cart/modifyCart",
+    				dataType: "text",
+    				data: {
+    					cart_id: $(this).prev().val(),
+    					product_num: $(this).prev().prev().val()
+    				},
+    				success: function(result){
+    					if(result == "MODIFY_CART_SUCCESS"){
+    						alert("장바구니가 수정되었습니다.");
+    					}
+    				}
+    				
+    			});
             });
 
             $(".btn_delete").on("click",function (event) {
                 var cart_id = $(this).prev().val();
                 console.log(cart_id);
+                
+                $.ajax({
+    				type: "post",
+    				url: "/cart/deleteCart",
+    				dataType: "text",
+    				data: {
+    					cart_id: $(this).prev().val(),
+    				},
+    				success: function(result){
+    					if(result == "DELETE_CART_SUCCESS"){
+    						alert("장바구니가 삭제되었습니다.");
+    					}
+    				}
+    				
+    			});
             });
             
 			$(".btn_order").on("click",function (event) {
