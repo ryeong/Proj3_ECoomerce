@@ -4,6 +4,10 @@
 
 <mapper namespace="ProductMapper">
 
+	<select id="listProduct" resultType="proj.ecom.product.domain.ProductDTO">
+		select * from ecommerce_product
+	</select>
+
 <!-- 	<select id="listDao" resultType="spring.mybatis.dto.ContentDto">
 		SELECT * FROM Mybatis_Bbs ORDER BY id DESC
 	</select>
@@ -15,5 +19,17 @@
 	<delete id="deleteDao">
 		DELETE FROM Mybatis_Bbs WHERE id = #{param1}
 	</delete> -->
+	
+	
+	<!-- <select id="getTotalCount" resultType="Integer">
+		select count(product_id) from product
+	</select> -->
+	
+	<!-- <select id="listProduct" resultType="proj.ecom.product.domain.ProductDTO">		
+		select product_name, product_price, product_image from product WHERE product_itemType=#{product_itemType, jdbcType=INTEGER} and 
+		product_sortType=#{product_sortType, jdbcType=INTEGER} order by product_id desc
+		]]>
+	</select> -->
+	
 	
 </mapper>
