@@ -3,7 +3,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="ProductMapper">
-
+	<!-- 수정 완료 -->
 	<select id="listProduct" resultType="proj.ecom.product.domain.ProductDTO">
 		select * from ecommerce_product
 	</select>
