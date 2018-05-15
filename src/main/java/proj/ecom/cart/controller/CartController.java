@@ -35,15 +35,32 @@ public class CartController {
 	/*장바구니 수정*/
 	@RequestMapping("/modifyCart")
 	public ResponseEntity<String> modifyCart(HttpSession session, String cart_id, String product_num) {	
-		cart_service.modifyCart(returnUserIdAndCartId(session,cart_id,product_num));
-		return new ResponseEntity<String>("", HttpStatus.OK);
+		ResponseEntity<String> entity;
+		System.out.println(cart_id);
+		System.out.println(product_num);
+		try {
+			//cart_service.modifyCart(returnUserIdAndCartId(session,cart_id,product_num));
+			 entity = new ResponseEntity<String>("MODIFY_CART_SUCCESS", HttpStatus.OK);
+		} catch (Exception e) {
+			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+			e.printStackTrace();
+		}
+		return entity;
 	}
 	
 	/*장바구니 삭제*/
 	@RequestMapping("/deleteCart")
 	public ResponseEntity<String> deleteCart(HttpSession session, String cart_id) {
-		cart_service.deleteCart(returnUserIdAndCartId(session,cart_id));
-		return new ResponseEntity<String>("", HttpStatus.OK);
+		ResponseEntity<String> entity;
+		System.out.println(cart_id);
+		try {
+			//cart_service.deleteCart(returnUserIdAndCartId(session,cart_id));
+			entity = new ResponseEntity<String>("DELETE_CART_SUCCESS", HttpStatus.OK);
+		} catch (Exception e) {
+			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+			e.printStackTrace();		
+		}	
+		return entity;
 	}
 	
 	/*user_id와 cart_id를 가지고 있는 map객체 반환*/

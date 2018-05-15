@@ -1,7 +1,5 @@
 package proj.ecom.user.service;
 
-import javax.servlet.http.HttpSession;
-
 import proj.ecom.user.domain.UserDTO;
 
 public interface UserService_Interface {
@@ -12,5 +10,10 @@ public interface UserService_Interface {
 	public UserDTO loginCheck(UserDTO udto);
 	//회원수정
 	public void modify(UserDTO udto);
+	//수정한 회원의 정보 가져오기
+	public UserDTO selectUser(UserDTO udto);
+	//회원 탈퇴
+	public void delete(UserDTO udto);
+	
 	
 }

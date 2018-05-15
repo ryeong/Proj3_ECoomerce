@@ -15,7 +15,6 @@
 	</div><br>
 
 	<form action="/user/logout" method="post">
-		<input type="hidden" name="type" value="0">
 		<div class="container" style="display: inline-block;">
 			<span class="btn-group">
 				<button type="submit" class="btn btn-default"
