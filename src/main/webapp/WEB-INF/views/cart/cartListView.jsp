@@ -44,7 +44,7 @@
 	                            <td class = "product_opt">${cart_dto.cart_product_size}</td>
 	                            <td class = "product_price">${cart_dto.product_price} 원</td>
 	                            <td>
-	                            	<input type = "number" size="3" maxlength="3" class = "product_num" value = "${cart_dto.product_quantity}"> 
+	                            	<input type = "number" size="3" maxlength="3" class = "product_num" value = "${cart_dto.cart_product_quantity}"> 
 		                			<input type = "hidden" value = "${cart_dto.product_id}">
 		                			<button type="button" class="btn btn_modify">변경</button>
 	                            </td> 	
@@ -61,6 +61,8 @@
 	                            </td>
 	                	</tr> 
               	</c:forEach>  
+           
+           
            
               	<!-- 연습용 코드 -->
              <%--  	<c:forEach begin="0" end="10" varStatus="status">	              
@@ -90,7 +92,9 @@
 	                	</td>
 	                </tr>
 	                
-                </c:forEach>   --%>          
+                </c:forEach>   --%>  
+                
+           		</tbody>
             </table>
             <form>
             	<button type="button" class="btn btn-danger btn_order">결제하기</button>
@@ -99,46 +103,7 @@
           </div>
           
           <script>
-            $(".btn_modify").on("click",function (event) {          	        
-            	/*console.log(product_id);
-                console.log(product_num); */
-                
-                $.ajax({
-    				type: "post",
-    				url: "/cart/modifyCart",
-    				dataType: "text",
-    				data: {
-    					cart_id: $(this).prev().val(),
-    					product_num: $(this).prev().prev().val()
-    				},
-    				success: function(result){
-    					if(result == "MODIFY_CART_SUCCESS"){
-    						alert("장바구니가 수정되었습니다.");
-    					}
-    				}
-    				
-    			});
-            });
-
-            $(".btn_delete").on("click",function (event) {
-                var cart_id = $(this).prev().val();
-                console.log(cart_id);
-                
-                $.ajax({
-    				type: "post",
-    				url: "/cart/deleteCart",
-    				dataType: "text",
-    				data: {
-    					cart_id: $(this).prev().val(),
-    				},
-    				success: function(result){
-    					if(result == "DELETE_CART_SUCCESS"){
-    						alert("장바구니가 삭제되었습니다.");
-    					}
-    				}
-    				
-    			});
-            });
+          	addBtnEvent();
             
 			$(".btn_order").on("click",function (event) {
                 $(".checkbox").each(function(){
@@ -161,10 +126,82 @@
 			
 			function getAllCartList() {
 				$.getJSON("/cart/getAllCartList", function(data) {
-					$.each(data, function(){
+					console.log(data);
+					
+					$("tbody tr").remove();
+					
+					$.each(data, function(i){				
+						var str = "<tr>";
+						str += "<td colspan='2' class = 'product_img'>";
+							str += "<input type = 'hidden' value='" + data[i].cart_id + "'>";
+							str += "<input class = 'checkbox' type = 'checkbox' value='" + data[i].product_id + "'>";
+							str += "<a href ='#'><img src='" + data.product_image + "' alt='제품 사진' width='100px' height='100px'></a>";
+						str += "</td>";
 						
+						str += "<td colspan='2' class = 'product_name'><a href = '#'>"+ data[i].product_name + "</a></td>";
+						str += "<td class = 'product_opt'>"+ data[i].cart_product_size +"</td>";
+						str += "<td class = 'product_price'>" + data[i].product_price + "원</td>";
+						str += "<td>"
+							str += "<input type = 'number' size='3' maxlength='3' class = 'product_num' value = '" + data[i].cart_product_quantity + "'>";
+							str += "<input type = 'hidden' value = '" + data[i].product_id + "'>";
+							str += "<button type='button' class='btn btn_modify'>변경</button>";
+						str += "</td>";
+						str += "<td class = 'product_sum'>";
+							str += "<input type = 'hidden' value = '" + data[i].cart_id + "'>";
+							str += "<button type='button' class='btn btn_delete'>삭제</button>"
+						str += "</td>"
+						str += "</tr>";
+						
+						$("tbody").append(str);
 					});
+					addBtnEvent();			
 				});
+				
+				
+			}
+		
+			function addBtnEvent(){
+				$(".btn_modify").on("click",function (event) {          	        
+	            	/*console.log(product_id);
+	                console.log(product_num); */
+	                
+	                $.ajax({
+	    				type: "post",
+	    				url: "/cart/modifyCart",
+	    				dataType: "text",
+	    				data: {
+	    					cart_id: $(this).prev().val(),
+	    					product_num: $(this).prev().prev().val()
+	    				},
+	    				success: function(result){
+	    					if(result == "MODIFY_CART_SUCCESS"){
+	    						getAllCartList();
+	    						alert("장바구니가 수정되었습니다.");
+	    					}
+	    				}
+	    				
+	    			});
+	            });
+				
+				  $(".btn_delete").on("click",function (event) {
+		                var cart_id = $(this).prev().val();
+		                console.log(cart_id);
+		                
+		                $.ajax({
+		    				type: "post",
+		    				url: "/cart/deleteCart",
+		    				dataType: "text",
+		    				data: {
+		    					cart_id: $(this).prev().val(),
+		    				},
+		    				success: function(result){
+		    					if(result == "DELETE_CART_SUCCESS"){
+		    						getAllCartList();
+		    						alert("장바구니가 삭제되었습니다.");
+		    					}
+		    				}		
+		    			});
+		            });
 			}
 			
 			function sum(a,b){

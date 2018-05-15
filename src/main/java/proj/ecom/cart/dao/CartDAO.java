@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -23,11 +24,15 @@ public class CartDAO implements CartDAO_Interface{
 
 	@Override
 	public void modifyCart(Map<String, Object> map) {
-		sqlSession.update(NAMESPACE + ".updateCart",map);
+		System.out.println(map.get("user_id"));
+		System.out.println(map.get("cart_id"));
+		System.out.println(map.get("product_quantity"));
+		sqlSession.update(NAMESPACE + ".modifyCart",map);
 	}
 	
 	@Override
 	public void deleteCart(Map<String, Object> map) {
 		sqlSession.update(NAMESPACE + ".deleteCart",map);
 	}
+
 }

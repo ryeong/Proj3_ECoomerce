@@ -11,8 +11,8 @@
 		]]>
 	</select>
 	
-	<update id="modifyCart">
-		update ecommerce_cart set cart_product_num = #{product_num} where cart_user_id = #{user_id} and cart_id = #{cart_id}
+	<update id="modifyCart" >
+		update ecommerce_cart set cart_product_quantity = #{product_quantity} where cart_user_id = #{user_id} and cart_id = #{cart_id}
 	</update>
 	
 	<delete id="deleteCart">
