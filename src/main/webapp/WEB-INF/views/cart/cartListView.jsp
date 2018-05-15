@@ -21,7 +21,7 @@
             
             <!-- <h3>[장바구니](el태그.수량)</h3> -->
             <!-- 테스트용 코드 -->
-            <h3>[장바구니]()</h3>            
+            <h3>[장바구니 목록]</h3>            
             <table class="table table-condensed" style = "height: 700px;">
               <thead>
                 <tr align="center" class="info">
@@ -35,20 +35,20 @@
               <tbody>
               	<c:forEach items="${cart_list}" var="cart_dto">
 	              		<tr>       
-	                            <td colspan="2" class = "product_img">
-	                            	<input type = "hidden" value="${cart_dto.cart_id}">
-	                            	<input class = "checkbox" type = "checkbox" value="${cart_dto.product_id}">
-	                            	<a href ="#"><img src="${cart_dto.product_image}" alt="제품 사진" width="100px" height="100px"></a>
-	                            </td>
-	                            <td colspan="2" class = "product_name"> <a href = "#">${cart_dto.product_name}</a></td>
-	                            <td class = "product_opt">${cart_dto.cart_product_size}</td>
-	                            <td class = "product_price">${cart_dto.product_price} 원</td>
-	                            <td>
-	                            	<input type = "number" size="3" maxlength="3" class = "product_num" value = "${cart_dto.cart_product_quantity}"> 
-		                			<input type = "hidden" value = "${cart_dto.product_id}">
-		                			<button type="button" class="btn btn_modify">변경</button>
-	                            </td> 	
-	                            <td class = "product_sum">
+	                    	<td colspan="2" class = "product_img">
+	                        	<input type = "hidden" value="${cart_dto.cart_id}">
+	                           	<input class = "checkbox" type = "checkbox" value="${cart_dto.product_id}">
+	                            <a href ="#"><img src="${cart_dto.product_image}" alt="제품 사진" width="100px" height="100px"></a>
+	                       	</td>
+	                        <td colspan="2" class = "product_name"> <a href = "#">${cart_dto.product_name}</a></td>
+	                        <td class = "product_opt">${cart_dto.cart_product_size}</td>
+	                        <td class = "product_price">${cart_dto.product_price} 원</td>
+	                        <td>
+	                            <input type = "number" size="3" maxlength="3" class = "product_num" value = "${cart_dto.cart_product_quantity}"> 
+		                		<input type = "hidden" value = "${cart_dto.product_id}">
+		                		<button type="button" class="btn btn_modify">변경</button>
+	                        </td> 	
+	                        <td class = "product_sum">
 		                           <%--  <script>
 		                            	var a = $(".product_num").val();
 		                            	var b = $(".product_price").text();		                           
@@ -56,9 +56,9 @@
 		                            	console.log(b);
 		                            	console.log(sum(a,b));
 		                            </script>원 --%> 
-		                            <input type = "hidden" value = "${cart_dto.cart_id}"> 
-			                		<button type="button" class="btn btn_delete">삭제</button>
-	                            </td>
+		                   		<input type = "hidden" value = "${cart_dto.cart_id}"> 
+			                	<button type="button" class="btn btn_delete">삭제</button>
+	                    	</td>
 	                	</tr> 
               	</c:forEach>  
            
@@ -90,8 +90,7 @@
 	                		<input type = "hidden" name = "cart_id" value = "cart_id">
 	                		<button type="button" class="btn btn_delete">삭제</button>
 	                	</td>
-	                </tr>
-	                
+	                </tr>                
                 </c:forEach>   --%>  
                 
            		</tbody>
@@ -103,110 +102,113 @@
           </div>
           
           <script>
-          	addBtnEvent();
-            
-			$(".btn_order").on("click",function (event) {
-                $(".checkbox").each(function(){
-                	var checkbox = $(this);
-                	var $form = $("form"); 
-                	if(checkbox.is(":checked")){               		              
-                		console.log(checkbox.prev().val());
-                		console.log($form.append(checkbox.prev().serialize()));
-                	} 
-                });
-            });
-			
-			$("#allCheck").change(function(){
-				if($(this).is(":checked")){
-					$(".checkbox").prop("checked",true);					
-				}else{
-					$(".checkbox").prop("checked",false);
-				}
-			});
-			
-			function getAllCartList() {
-				$.getJSON("/cart/getAllCartList", function(data) {
-					console.log(data);
-					
-					$("tbody tr").remove();
-					
-					$.each(data, function(i){				
-						var str = "<tr>";
-						str += "<td colspan='2' class = 'product_img'>";
-							str += "<input type = 'hidden' value='" + data[i].cart_id + "'>";
-							str += "<input class = 'checkbox' type = 'checkbox' value='" + data[i].product_id + "'>";
-							str += "<a href ='#'><img src='" + data.product_image + "' alt='제품 사진' width='100px' height='100px'></a>";
-						str += "</td>";
-						
-						str += "<td colspan='2' class = 'product_name'><a href = '#'>"+ data[i].product_name + "</a></td>";
-						str += "<td class = 'product_opt'>"+ data[i].cart_product_size +"</td>";
-						str += "<td class = 'product_price'>" + data[i].product_price + "원</td>";
-						str += "<td>"
-							str += "<input type = 'number' size='3' maxlength='3' class = 'product_num' value = '" + data[i].cart_product_quantity + "'>";
-							str += "<input type = 'hidden' value = '" + data[i].product_id + "'>";
-							str += "<button type='button' class='btn btn_modify'>변경</button>";
-						str += "</td>";
-						str += "<td class = 'product_sum'>";
-							str += "<input type = 'hidden' value = '" + data[i].cart_id + "'>";
-							str += "<button type='button' class='btn btn_delete'>삭제</button>"
-						str += "</td>"
-						str += "</tr>";
-						
-						$("tbody").append(str);
-					});
-					addBtnEvent();			
-				});
-				
-				
-			}
-		
-			function addBtnEvent(){
-				$(".btn_modify").on("click",function (event) {          	        
-	            	/*console.log(product_id);
-	                console.log(product_num); */
-	                
-	                $.ajax({
-	    				type: "post",
-	    				url: "/cart/modifyCart",
-	    				dataType: "text",
-	    				data: {
-	    					cart_id: $(this).prev().val(),
-	    					product_num: $(this).prev().prev().val()
-	    				},
-	    				success: function(result){
-	    					if(result == "MODIFY_CART_SUCCESS"){
-	    						getAllCartList();
-	    						alert("장바구니가 수정되었습니다.");
-	    					}
-	    				}
-	    				
-	    			});
+          	$(document).ready(function() {
+	          	addBtnEvent();
+	            
+				$(".btn_order").on("click",function (event) {
+	                var cart_id_array = new Array();
+					$(".checkbox").each(function(){
+	                	var checkbox = $(this);
+	                	var $form = $("form"); 
+	                	if(checkbox.is(":checked")){
+	                		var cart_id = checkbox.prev().val();
+	                		cart_id_array.cart_id = cart_id;
+	                	} 
+	                });
 	            });
 				
-				  $(".btn_delete").on("click",function (event) {
-		                var cart_id = $(this).prev().val();
-		                console.log(cart_id);
+				$("#allCheck").change(function(){
+					if($(this).is(":checked")){
+						$(".checkbox").prop("checked",true);					
+					}else{
+						$(".checkbox").prop("checked",false);
+					}
+				});
+				
+				function getAllCartList() {
+					$.getJSON("/cart/getAllCartList", function(data) {
+						console.log(data);
+						
+						$("tbody tr").remove();
+						
+						$.each(data, function(i){				
+							var str = "<tr>";
+							str += "<td colspan='2' class = 'product_img'>";
+								str += "<input type = 'hidden' value='" + data[i].cart_id + "'>";
+								str += "<input class = 'checkbox' type = 'checkbox' value='" + data[i].product_id + "'>";
+								str += "<a href ='#'><img src='" + data.product_image + "' alt='제품 사진' width='100px' height='100px'></a>";
+							str += "</td>";
+							
+							str += "<td colspan='2' class = 'product_name'><a href = '#'>"+ data[i].product_name + "</a></td>";
+							str += "<td class = 'product_opt'>"+ data[i].cart_product_size +"</td>";
+							str += "<td class = 'product_price'>" + data[i].product_price + "원</td>";
+							str += "<td>"
+								str += "<input type = 'number' size='3' maxlength='3' class = 'product_num' value = '" + data[i].cart_product_quantity + "'>";
+								str += "<input type = 'hidden' value = '" + data[i].product_id + "'>";
+								str += "<button type='button' class='btn btn_modify'>변경</button>";
+							str += "</td>";
+							str += "<td class = 'product_sum'>";
+								str += "<input type = 'hidden' value = '" + data[i].cart_id + "'>";
+								str += "<button type='button' class='btn btn_delete'>삭제</button>"
+							str += "</td>"
+							str += "</tr>";
+							
+							$("tbody").append(str);
+						});
+						addBtnEvent();			
+					});
+					
+					
+				}
+			
+				function addBtnEvent(){
+					$(".btn_modify").on("click",function (event) {          	        
+		            	/*console.log(product_id);
+		                console.log(product_num); */
 		                
 		                $.ajax({
 		    				type: "post",
-		    				url: "/cart/deleteCart",
+		    				url: "/cart/modifyCart",
 		    				dataType: "text",
 		    				data: {
 		    					cart_id: $(this).prev().val(),
+		    					product_num: $(this).prev().prev().val()
 		    				},
 		    				success: function(result){
-		    					if(result == "DELETE_CART_SUCCESS"){
+		    					if(result == "MODIFY_CART_SUCCESS"){
 		    						getAllCartList();
-		    						alert("장바구니가 삭제되었습니다.");
+		    						alert("장바구니가 수정되었습니다.");
 		    					}
-		    				}		
+		    				}
+		    				
 		    			});
 		            });
-			}
-			
-			function sum(a,b){
-				return a * b;
-			}
+					
+					  $(".btn_delete").on("click",function (event) {
+			                var cart_id = $(this).prev().val();
+			                console.log(cart_id);
+			                
+			                $.ajax({
+			    				type: "post",
+			    				url: "/cart/deleteCart",
+			    				dataType: "text",
+			    				data: {
+			    					cart_id: $(this).prev().val(),
+			    				},
+			    				success: function(result){
+			    					if(result == "DELETE_CART_SUCCESS"){
+			    						getAllCartList();
+			    						alert("장바구니가 삭제되었습니다.");
+			    					}
+			    				}		
+			    			});
+			            });
+				}
+				
+				function sum(a,b){
+					return a * b;
+				}
+          	});
           </script>
     </body>
 </html>
