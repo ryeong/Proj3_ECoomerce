@@ -18,7 +18,7 @@ public class CartDAO implements CartDAO_Interface{
 	private SqlSession sqlSession;
 	
 	public List<CartDTO> cartList(String user_id) {
-		return sqlSession.selectList(NAMESPACE + ".",user_id);
+		return sqlSession.selectList(NAMESPACE + ".selectCartList",user_id);
 	}
 
 	@Override

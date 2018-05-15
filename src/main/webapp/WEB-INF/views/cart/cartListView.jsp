@@ -34,30 +34,30 @@
               </thead>
               <tbody>
               	<c:forEach items="${cart_list}" var="cart_dto">
-              		<%-- <tr>       
+              		<tr>       
                             <td colspan="2" class = "product_img">
-                            	<input type = "hidden" value="${cart_id}">
-                            	<input type = "checkbox" value="${제품 번호}">
-                            	<a href =""><img src="${cart_dto.product_dto.product_img}" alt="제품 사진" width="100px" height="100px"></a>
+                            	<input type = "hidden" value="${cart_dto.cart_id}">
+                            	<input class = "checkbox" type = "checkbox" value="${cart_dto.product_id}">
+                            	<a href ="#"><img src="${cart_dto.product_image}" alt="제품 사진" width="100px" height="100px"></a>
                             </td>
-                            <td colspan="2" class = "product_name"> <a href = "#">${cart_dto.product_dto.product_name}</a></td>
-                            <td class = "product_opt">${cart_dto.product_dto.product_size}</td>
-                            <td class = "product_price">${cart_dto.product_dto.product_price} 원</td>
+                            <td colspan="2" class = "product_name"> <a href = "#">${cart_dto.product_name}</a></td>
+                            <td class = "product_opt">${cart_dto.cart_product_size}</td>
+                            <td class = "product_price">${cart_dto.product_price} 원</td>
                             <td>
-                            	<input type = "number" size="3" maxlength="3" class = "product_num"> 
-	                			<input type = "hidden" value = "${cart_dto.product_dto.product_id}">
+                            	<input type = "number" size="3" maxlength="3" class = "product_num" value = "${cart_dto.product_quantity}"> 
+	                			<input type = "hidden" value = "${cart_dto.product_id}">
 	                			<button type="button" class="btn btn_modify">변경</button>
                             </td> 	
                             <td class = "product_sum">
-	                            <script>${cart_dto.cart_price} * ${cart_dto.cart_num}</script>  
-	                            <input type = "hidden" value = "cart_id">
+	                            <script>${cart_dto.product_price} * ${cart_dto.cart_product_quantity}</script>원  
+	                            <input type = "hidden" value = "${cart_dto.cart_id}">
 		                		<button type="button" class="btn btn_delete">삭제</button>
                             </td>
-                	</tr> --%>
+                	</tr> 
               	</c:forEach>
               	
               	<!-- 연습용 코드 -->
-              	<c:forEach begin="0" end="10" varStatus="status">	              
+             <%--  	<c:forEach begin="0" end="10" varStatus="status">	              
 	              	<tr >
 	                	<td colspan="2" class = "product_img">
 	                		<input type = "hidden" name ="cart_id" value="${status.index}">
@@ -84,7 +84,7 @@
 	                	</td>
 	                </tr>
 	                
-                </c:forEach>            
+                </c:forEach>   --%>          
             </table>
             <form>
             	<button type="button" class="btn btn-danger btn_order">결제하기</button>
@@ -124,6 +124,14 @@
 					$(".checkbox").prop("checked",false);
 				}
 			});
+			
+			function getAllCartList() {
+				$.getJSON("/cart/getAllCartList", function(data) {
+					$.each(data, function(){
+						
+					});
+				});
+			}
           </script>
     </body>
 </html>

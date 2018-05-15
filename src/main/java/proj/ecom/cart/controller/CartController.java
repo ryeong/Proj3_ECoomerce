@@ -22,8 +22,12 @@ public class CartController {
 	
 	/*장바구니 리스트 보기*/
 	@RequestMapping("/cartList")
-	public String cartList(String user_id, Model m) {
-		//m.addAttribute("cart_list",cart_service.cartList(user_id));
+	public String cartList(HttpSession session, Model m) {
+		//UserDTO user_dto = (UserDTO)session.getAttribute("login");		
+		//m.addAttribute("cart_list",cart_service.cartList(user_dto.getUser_id()));
+		/*test용 id*/
+		String user_id = "test1";
+		m.addAttribute("cart_list",cart_service.cartList(user_id));
 		m.addAttribute("content", "../views/cart/cartListView.jsp");
 		return "main";
 	}
