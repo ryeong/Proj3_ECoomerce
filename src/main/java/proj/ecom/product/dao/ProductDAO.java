@@ -34,13 +34,10 @@ public class ProductDAO implements ProductDAO_Interface{
 	}
 
 	@Override
-	public List<ProductDTO> productDetail( int product_id, Criteria cri) {
-		Map<String, Object> map = new HashMap<String, Object>();
-
-		map.put("product_id", product_id);
-		map.put("cri", cri);
+	public ProductDTO productDetail(int product_id) {
 		
-		return sqlSession.selectList(NAMESPACE+".productDetail", map);
+		
+		return sqlSession.selectOne(NAMESPACE+".productDetail", product_id);
 	}
 
 	public ProductDTO productQuantityCheck(int product_id) {

@@ -31,9 +31,9 @@ public class ProductService implements ProductService_Interface{
 	}
 
 	@Override
-	public List<ProductDTO> productDetail(int product_id, Criteria cri) {
+	public ProductDTO productDetail(int product_id) {
 		
-		return productDao.productDetail( product_id, cri);
+		return productDao.productDetail( product_id);
 	}
 
 	@Override

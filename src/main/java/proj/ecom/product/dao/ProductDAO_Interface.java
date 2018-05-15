@@ -10,5 +10,5 @@ public interface ProductDAO_Interface {
 
 		List<ProductDTO> listProduct(int product_itemType, int product_sortType, Criteria cri);
 
-		List<ProductDTO> productDetail (int product_id, Criteria cri);
+		ProductDTO productDetail(int product_id);
 }

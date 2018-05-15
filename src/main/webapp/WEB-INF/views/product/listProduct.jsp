@@ -20,40 +20,40 @@
 </style>
     </head>
 <body>
-<h1>상품 상의</h1>
+
 <div class="container">
 		<div class="row">
-			<h1>검색 목록</h1>
+			<h1>카테고리 별 상품 전체 목록</h1>
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>제품번호</th>
-						<th>제품이미지</th>
-						<th>제품이름</th>
-						<th>제품가격</th>
+						<th>상품번호</th>
+						<th>상품이미지</th>
+						<th>상품이름</th>
+						<th>상품가격</th>
+						<th>상품카테고리</th>
 					</tr>
 				</thead>
 				
 				<tbody>
-					<c:forEach items="${list}" var="productDTO">
-			
+				<!-- itemType을 1로 주었을 때 상의 상품만 나오도록 -->
+				
+					<c:forEach items="${list}" var="productDTOList">
 						<tr>
-							<td>${productDTO.product_id}</td>
+							<td>${productDTOList.product_id}</td>
 							
 							<td><form action="/product/productDetail"> 
-			 				 <%-- <input type="hidden" name="product_size" value="${productDTO.product_size}"> --%>
-			 				 <input type="hidden" name="product_id" value="${productDTO.product_id}">
-							 <img src="${productDTO.product_image}" name="${productDTO.product_image}">
-							 <input type="submit" src="${productDTO.product_image}" value="이미지">
+			 				 <input type="hidden" name="product_id" value="${productDTOList.product_id}">
+							 <img src="${productDTOList.product_image}" name="${productDTOList.product_image}">
+							 <input type="submit" src="${productDTOList.product_image}" value="이미지">
 							</form></td>
 							
-							
-							<td>${productDTO.product_name}</td>
-							<td>${productDTO.product_price}</td>
+							<td>${productDTOList.product_name}</td>
+							<td>${productDTOList.product_price}</td>
+							<td>${productDTOList.product_itemType}</td>
 						</tr>
-						
-						
 					</c:forEach>
+				 
 				</tbody>
 			</table>
 		</div>
