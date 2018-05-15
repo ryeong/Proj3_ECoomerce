@@ -22,8 +22,6 @@ public class ProductService implements ProductService_Interface{
 		return 0;
 	}
 
-
-
 	@Override
 	public List<ProductDTO> listProduct(int product_itemType, int product_sortType, Criteria cri) {
 		System.out.println("product_itemType service "+product_itemType);
@@ -32,12 +30,16 @@ public class ProductService implements ProductService_Interface{
 		return productDao.listProduct(product_itemType, product_sortType, cri);
 	}
 
-
+	@Override
+	public ProductDTO productDetail(int product_id) {
+		
+		return productDao.productDetail( product_id);
+	}
 
 	@Override
-	public List<ProductDTO> productDetail(int product_id) {
+	public ProductDTO productQuantityCheck(int product_id) {
 		
-		return productDao.productDetail(product_id);
+		return productDao.productQuantityCheck(product_id);
 	}
 
 

@@ -29,8 +29,6 @@ public class MyOracleConnectionTest {
 				e.printStackTrace();
 			}
 			
-				
-			
 		}
 	}
 	
