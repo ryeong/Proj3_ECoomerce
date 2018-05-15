@@ -22,29 +22,21 @@ public class ProductController {
 	@Inject
 	private ProductService_Interface productService;
 	
-	
-	//2. 상의 조회
-	/*@RequestMapping(value = "/product/listProduct?product_itemType={product_itemType}&product_sortType={product_sortType}", method = RequestMethod.GET)
-	public String listproduct(@PathVariable("product_itemType") int product_itemType, @PathVariable("product_sortType") int product_sortType, 
-							Criteria cri, Model model){	
-					
-	}*/
-	/*@RequestMapping(value="listProduct", method=RequestMethod.GET)
-	public String listProduct(@RequestParam("product_itemType") int product_itemType, @RequestParam int product_sortType 
-							, Criteria cri, Model model) {	*/	
-	
-	//1.상품 상의
+	//1.상품 목록
 	/*@RequestMapping(value= {"listProduct?product_itemType=0&listProduct_sortType=0", 
 	"listProduct?product_itemType=1&product_sortType=0",
 	"listProduct?product_itemType=2&listProduct_sortType=0",
 	"listProduct?product_itemType=3&listProduct_sortType=0"}, method=RequestMethod.GET)*/
-	@RequestMapping(value="listProduct",params={"product_itemType=1", "product_sortType=0"}, method=RequestMethod.GET)
-	public String listProduct(@RequestParam("product_itemType") int product_itemType, @RequestParam int product_sortType 
-							, Criteria cri, Model model) {	
+	//@RequestMapping(value="listProduct",params={"product_itemType=1", "product_sortType=0"}, method=RequestMethod.GET)
+	@RequestMapping(value="listProduct", method=RequestMethod.GET)
+	public String listProduct(@RequestParam("product_itemType") int product_itemType, 
+								@RequestParam("product_sortType") int product_sortType,
+								Criteria cri, Model model) {	
+		
+		model.addAttribute("content", "../views/product/listProduct.jsp");
+		
 		model.addAttribute("list", productService.listProduct(product_itemType, product_sortType, cri));
 		
-
-		model.addAttribute("content", "../views/product/listProduct.jsp");
 		
 		PageMaker pm = new PageMaker();
 		pm.setCri(cri);
@@ -57,46 +49,7 @@ public class ProductController {
 		
 		return "main";
 	}
-	//2.상품 하의
-	@RequestMapping(value="listProduct",params={"product_itemType=2", "product_sortType=0"}, method=RequestMethod.GET)
-	public String listProductBottom(@RequestParam("product_itemType") int product_itemType, @RequestParam int product_sortType 
-							, Criteria cri, Model model) {	
-		model.addAttribute("list", productService.listProduct(product_itemType, product_sortType, cri));
-		
-
-		model.addAttribute("content", "../views/product/listProduct.jsp");
-		
-		PageMaker pm = new PageMaker();
-		pm.setCri(cri);
-		pm.setTotalCount(productService.getTotalCount());
-		
-		System.out.println("getTotalCount 전체 상품게시글의 수 " + productService.getTotalCount());
-		System.out.println("getTotalCount 전체 상품게시글의 수 " + pm.getTotalCount());
-		System.out.println("cri + " + pm.getCri());
-		model.addAttribute("pm", pm);
-		
-		return "main";
-	}
-	//3.상품 신발
-		@RequestMapping(value="listProduct",params={"product_itemType=3", "product_sortType=0"}, method=RequestMethod.GET)
-		public String listProductShoes(@RequestParam("product_itemType") int product_itemType, @RequestParam int product_sortType 
-								, Criteria cri, Model model) {	
-			model.addAttribute("list", productService.listProduct(product_itemType, product_sortType, cri));
-			
-
-			model.addAttribute("content", "../views/product/listProduct.jsp");
-			
-			PageMaker pm = new PageMaker();
-			pm.setCri(cri);
-			pm.setTotalCount(productService.getTotalCount());
-			
-			System.out.println("getTotalCount 전체 상품게시글의 수 " + productService.getTotalCount());
-			System.out.println("getTotalCount 전체 상품게시글의 수 " + pm.getTotalCount());
-			System.out.println("cri + " + pm.getCri());
-			model.addAttribute("pm", pm);
-			
-			return "main";
-		}
+	
 	//4. 상품 자세히보기
 	@RequestMapping(value="productDetail", method=RequestMethod.GET)
 	public String productDetail(
