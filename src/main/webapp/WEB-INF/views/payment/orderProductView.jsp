@@ -16,7 +16,7 @@
 	<body>
 		 <div class="container" style = "width :946px; " >
             <div id = "topImage">
-            	<img alt="장바구니" src="/resources/image/cart_topTitle02.jpg" style = "width :910px">
+            	<img alt="주문/결제" src="/resources/image/cart_topTitle02.jpg" style = "width :910px">
             </div>
             
             <!-- <h3>[장바구니](el태그.수량)</h3> -->
@@ -33,7 +33,6 @@
                 </tr>
               </thead>
               <tbody>
-              	<c:forEach items="${cart_list}" var="cart_dto">
               		<%-- <tr>       
                             <td colspan="2" class = "product_img">
                             	<input type = "checkbox" value="${제품 번호}">
@@ -58,23 +57,47 @@
 	                	<td class = "product_sum"><script>${cart_dto.cart_price} * ${cart_dto.cart_num}</script> </td>
 	                </tr>
                 	--%>
+                	<c:forEach items="${cart_list}" var="cart_dto">
+	              		<tr>       
+	                    	<td colspan="2" class = "product_img">
+	                        	<input type = "hidden" value="${cart_dto.cart_id}">
+	                            <img src="${cart_dto.product_image}" alt="제품 사진" width="100px" height="100px">
+	                       	</td>
+	                        <td colspan="2" class = "product_name">${cart_dto.product_name}</td>
+	                        <td class = "product_opt">${cart_dto.cart_product_size}</td>
+	                        <td class = "product_price">${cart_dto.product_price} 원</td>
+	                        <td>
+	                          	${cart_dto.cart_product_quantity}
+		                		<input type = "hidden" value = "${cart_dto.product_id}">
+	                        </td> 	
+	                        <td class = "product_sum">
+		                           <%--  <script>
+		                            	var a = $(".product_num").val();
+		                            	var b = $(".product_price").text();		                           
+		                            	console.log(a);
+		                            	console.log(b);
+		                            	console.log(sum(a,b));
+		                            </script>원 --%> 
+	                    	</td>
+	                	</tr> 
               	</c:forEach>
               	
-              	<!-- 연습용 코드 -->
-              	<c:forEach begin="0" end="10">
-	              	<tr >
-	                	<td colspan="2" class = "product_img">	               
-	                		<img src="" alt="제품 사진" width="200px" height="200px">
-	                	</td>
-	                	<td colspan="2" class = "product_name">
-	                		<a href = "#">sdjhsafsafssssssssssssssssssal</a>
-	                	</td>
-	                	<td class = "product_opt">250</td>
-	                	<td class = "product_price">2000 원</td>
-	                	<td>1</td> 	
-	                	<td class = "product_sum">가격 * 수량 </td>
-	                </tr>
-                </c:forEach>            
+	              <%-- 	<!-- 연습용 코드 -->
+	              	<c:forEach begin="0" end="10">
+		              	<tr >
+		                	<td colspan="2" class = "product_img">	               
+		                		<img src="" alt="제품 사진" width="200px" height="200px">
+		                	</td>
+		                	<td colspan="2" class = "product_name">
+		                		<a href = "#">sdjhsafsafssssssssssssssssssal</a>
+		                	</td>
+		                	<td class = "product_opt">250</td>
+		                	<td class = "product_price">2000 원</td>
+		                	<td>1</td> 	
+		                	<td class = "product_sum">가격 * 수량 </td>
+		                </tr>
+	                </c:forEach>      --%>       
+                </tbody>
             </table>
             
             <div id = "tbl_one" style="float: left; margin-top: 20px;  margin-left: 10px;">
@@ -89,9 +112,9 @@
 	              </thead>
 	              <tbody>
 		         	  <tr >
-		              	<td></td>
-		              	<td></td>
-		              	<td></td>	
+		              	<td>${session.user_name}</td>
+		              	<td>${session.user_phoneNumber}</td>
+		              	<td>${session.user_email}</td>	
 		              </tr>          
 	            </table>   
 	        </div>
@@ -108,7 +131,11 @@
 	              <tbody>
 		         	  <tr >
 		              	<td></td>
-		              	<td><button style="margin-left: 40px" type="submit" class="btn btn-danger btn_order">주문하기</button></td>
+		              	<td>
+		              		<form action="/payment/orderProduct" method="post">
+		              			<button style="margin-left: 40px" type="submit"  class="btn btn-danger btn_order" >주문하기</button>
+		              		</form>
+		              	</td>
 		              </tr>          
 	            </table>   
 	        </div>                       

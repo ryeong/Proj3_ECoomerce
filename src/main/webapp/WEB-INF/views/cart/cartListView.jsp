@@ -95,8 +95,8 @@
                 
            		</tbody>
             </table>
-            <form>
-            	<button type="button" class="btn btn-danger btn_order">결제하기</button>
+            <form action="/payment/orderProduct">
+            	<button type="submit" class="btn btn-danger btn_order">결제하기</button>
             </form>
                   
           </div>
@@ -106,15 +106,7 @@
 	          	addBtnEvent();
 	            
 				$(".btn_order").on("click",function (event) {
-	                var cart_id_array = new Array();
-					$(".checkbox").each(function(){
-	                	var checkbox = $(this);
-	                	var $form = $("form"); 
-	                	if(checkbox.is(":checked")){
-	                		var cart_id = checkbox.prev().val();
-	                		cart_id_array.cart_id = cart_id;
-	                	} 
-	                });
+	                
 	            });
 				
 				$("#allCheck").change(function(){
@@ -187,7 +179,15 @@
 					  $(".btn_delete").on("click",function (event) {
 			                var cart_id = $(this).prev().val();
 			                console.log(cart_id);
-			                
+			                /* var cart_id_array = new Array();
+							$(".checkbox").each(function(){
+			                	var checkbox = $(this);
+			                	var $form = $("form"); 
+			                	if(checkbox.is(":checked")){
+			                		var cart_id = checkbox.prev().val();
+			                		cart_id_array.cart_id = cart_id;
+			                	} 
+			                }); */
 			                $.ajax({
 			    				type: "post",
 			    				url: "/cart/deleteCart",
