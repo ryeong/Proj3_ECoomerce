@@ -42,8 +42,6 @@ public class UserController {
 		if(user_dto.getUser_id() != null) { //로그인에 성공했을 시 
 			session.setAttribute("login",user_dto);
 			
-		} else { //로그인에 실패했을 경우에
-			
 		}
 		//System.out.println((String) session.getAttribute("user_id"));
 		//System.out.println(user_id);

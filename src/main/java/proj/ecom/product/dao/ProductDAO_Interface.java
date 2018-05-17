@@ -9,4 +9,6 @@ public interface ProductDAO_Interface {
 	//1. 각 상품 보기 - 목차에서 눌렀을 때 상의, 하의, 신발
 
 		List<ProductDTO> listProduct(int product_itemType, int product_sortType, Criteria cri);
+
+		ProductDTO productDetail(int product_id);
 }

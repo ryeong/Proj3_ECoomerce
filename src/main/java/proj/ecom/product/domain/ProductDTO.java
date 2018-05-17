@@ -13,28 +13,27 @@ public class ProductDTO implements Serializable {
 	private int product_sortType;
 	private String product_name;
 	private String product_image;
+	private String product_size;
 	private int product_price;
 	private int product_quantity;
 	
 	public ProductDTO() {
 		
 	}
-	
+
+
 	public ProductDTO(int product_id, int product_itemType, int product_sortType, String product_name,
-			String product_image, int product_price, int product_quantity) {
+			String product_image, String product_size, int product_price, int product_quantity) {
 		super();
 		this.product_id = product_id;
 		this.product_itemType = product_itemType;
 		this.product_sortType = product_sortType;
 		this.product_name = product_name;
 		this.product_image = product_image;
+		this.product_size = product_size;
 		this.product_price = product_price;
 		this.product_quantity = product_quantity;
 	}
-
-
-
-
 
 	public int getProduct_id() {
 		return product_id;
@@ -101,6 +100,18 @@ public class ProductDTO implements Serializable {
 	public void setProduct_quantity(int product_quantity) {
 		this.product_quantity = product_quantity;
 	}
+	
+	
+
+	public String getProduct_size() {
+		return product_size;
+	}
+
+
+	public void setProduct_size(String product_size) {
+		this.product_size = product_size;
+	}
+
 
 	@Override
 	public int hashCode() {
@@ -109,7 +120,6 @@ public class ProductDTO implements Serializable {
 		result = prime * result + product_id;
 		return result;
 	}
-
 
 
 	@Override

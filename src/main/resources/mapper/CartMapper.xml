@@ -5,11 +5,14 @@
 <mapper namespace="CartMapper">
 
 	 <select id="selectCartList" resultType="proj.ecom.cart.domain.CartDTO">
-		SELECT * 
+		<![CDATA[
+			SELECT c.cart_id, c.cart_user_id, c.cart_product_quantity, c.cart_product_size, p.product_id,
+			p.product_name, p.product_image, p.product_price from ecommerce_cart c, ecommerce_product p where cart_user_id = #{user_id} and c.cart_product_id = p.product_id
+		]]>
 	</select>
 	
-	<update id="modifyCart">
-		update ecommerce_cart set cart_product_num = #{product_num} where cart_user_id = #{user_id} and cart_id = #{cart_id}
+	<update id="modifyCart" >
+		update ecommerce_cart set cart_product_quantity = #{product_quantity} where cart_user_id = #{user_id} and cart_id = #{cart_id}
 	</update>
 	
 	<delete id="deleteCart">
