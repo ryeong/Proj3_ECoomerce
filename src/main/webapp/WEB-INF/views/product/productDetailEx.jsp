@@ -14,6 +14,20 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
+		<form action="/payment/addToCart" method="post">
+			<input type = "hidden" name = "cart_id" value ="5">
+			<input type = "hidden" name = "cart_product_quantity" value ="1">
+			<input type = "hidden" name = "cart_product_id" value ="10">
+			<input type = "hidden" name = "cart_product_size" value ="210">
+			
+			<button type="submit" class="btn btn_addToCart">장바구니 추가</button>
+			<button type="submit" class="btn btn_orderProduct" formaction="/payment/orderProduct" formmethod="post">구매하기</button>
+		</form>
 		
+		<script type="text/javascript">
+			$(".btn_addToCart").on("click",function(){
+				$("input")
+			});
+		</script>
 	</body>
 </html>

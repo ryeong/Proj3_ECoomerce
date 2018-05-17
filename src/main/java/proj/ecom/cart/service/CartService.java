@@ -36,4 +36,9 @@ public class CartService implements CartService_Interface{
 		cart_dao.updateStatus(user_id);
 	}
 
+	@Override
+	public void insertCart(CartDTO cart_dto) {
+		cart_dao.insertCart(cart_dto);
+	}
+
 }

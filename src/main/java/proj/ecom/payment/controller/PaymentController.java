@@ -7,10 +7,13 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import proj.ecom.cart.domain.CartDTO;
 import proj.ecom.cart.service.CartService_Interface;
@@ -62,4 +65,23 @@ public class PaymentController {
 		return formattedDate;
 	}
 	
+	//자세히보기 에서 장바구니로 이동
+	@RequestMapping(value="addToCart", method=RequestMethod.GET)
+	public String addToCartGet(Model model) {
+		model.addAttribute("content", "../views/product/productDetailEx.jsp");	
+		return "main";
+	}
+	
+	@RequestMapping(value="addToCart", method=RequestMethod.POST)
+	public ResponseEntity<String> addToCartPost(CartDTO cart_dto) {
+		ResponseEntity<String> entity;
+		try {
+			cartService.insertCart(cart_dto);
+			entity = new ResponseEntity<String>("ADDTOCART_SUCCESS",HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}
 }

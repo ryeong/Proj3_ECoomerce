@@ -13,6 +13,8 @@
 			
 		  	<a href="/product/listProduct?product_itemType=3&product_sortType=0" class="list-group-item list-group-item-action list-group-item-primary">신발</a>
 		  	
+		  	<a href="/payment/addToCart" class="list-group-item list-group-item-action list-group-item-primary">자세히보기 연습</a>
+		  	
 		  	
 		  <!-- 	<form action="/product/listProduct"> 
 			 <input type="hidden" name="product_itemType" value="1">

@@ -18,7 +18,6 @@
             <div id = "topImage1">
             	<img alt="장바구니" src="/resources/image/cart_topTitle01.jpg" style = "width :910px">
             </div>
-            
             <!-- <h3>[장바구니](el태그.수량)</h3> -->
             <!-- 테스트용 코드 -->
             <h3>[장바구니 목록]</h3>            
@@ -32,13 +31,13 @@
                   <th>합계</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody>         
               	<c:forEach items="${cart_list}" var="cart_dto">
 	              		<tr>       
 	                    	<td colspan="2" class = "product_img">
 	                        	<input type = "hidden" value="${cart_dto.cart_id}">
 	                           	<input class = "checkbox" type = "checkbox" value="${cart_dto.product_id}">
-	                            <a href ="#"><img src="${cart_dto.product_image}" alt="제품 사진" width="100px" height="100px"></a> 
+	                            <a href ="#"><img class = "img" src="${cart_dto.product_image}" alt="제품 사진" width="100px" height="100px"></a> 
 	                        <td colspan="2" class = "product_name"> <a href = "#">${cart_dto.product_name}</a></td>
 	                        <td class = "product_opt">${cart_dto.cart_product_size}</td>
 	                        <td class = "product_price">${cart_dto.product_price} 원</td>
@@ -74,7 +73,13 @@
 	          	addBtnEvent();
 	            
 				$(".btn_order").on("click",function (event) {
-	                
+					console.log($("tbody tr").length);
+					if($("tbody tr").length > 0){
+	                	
+	                }else{
+	                	$(".btn_order").attr("type","button");   	
+	                	alert("장바구니에 상품이 없습니다.");
+	                }
 	            });
 				
 				$("#allCheck").change(function(){

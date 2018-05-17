@@ -41,4 +41,9 @@ public class CartDAO implements CartDAO_Interface{
 		sqlSession.update(NAMESPACE + ".updateStatus",user_id); 
 	}
 
+	@Override
+	public void insertCart(CartDTO cart_dto) {
+		sqlSession.insert(NAMESPACE +".insertCart",cart_dto);
+	}
+
 }

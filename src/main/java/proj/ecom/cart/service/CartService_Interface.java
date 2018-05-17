@@ -17,4 +17,6 @@ public interface CartService_Interface {
 
 	void updateStatus(String user_id);
 
+	void insertCart(CartDTO cart_dto);
+
 }

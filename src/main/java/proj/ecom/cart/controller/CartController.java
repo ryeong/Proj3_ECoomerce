@@ -25,9 +25,14 @@ public class CartController {
 	/*장바구니 리스트 보기(model사용)*/
 	@RequestMapping("/cartList")
 	public String cartList(HttpSession session, Model m) {
-		UserDTO user_dto = (UserDTO)session.getAttribute("login");
-		m.addAttribute("cart_list",cart_service.cartList(user_dto.getUser_id()));
 		m.addAttribute("content", "../views/cart/cartListView.jsp");
+		
+		UserDTO user_dto = (UserDTO)session.getAttribute("login");
+		if(user_dto == null) {
+			return "main";
+		}
+		m.addAttribute("cart_list",cart_service.cartList(user_dto.getUser_id()));
+		
 		return "main";
 	}
 	
