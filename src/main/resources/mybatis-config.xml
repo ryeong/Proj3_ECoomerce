@@ -5,6 +5,11 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
   
 <configuration>
+	<typeAliases>
+		<typeAlias alias="QuestionDTO" type="proj.ecom.question.domain.QuestionDTO"/>
+	</typeAliases>
+		
+
 	<!-- 
 	<typeAliases>
  		<package name="proj.ecom.*.domain"></package>

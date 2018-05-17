@@ -17,30 +17,41 @@
 	
 	<div class="container">
 		<div class="row">
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th>글번호</th>
-						<th>제목</th>
-						<th>작성자</th>
-						<th>작성일자</th>
-						<th>조회수</th>
-				</thead>
-				<tbody>
-					<c:forEach items="${qlist}" var="board">
-					  <tr>
-					    <td>${board.bno}</td>
-					    <td>${board.title}</td>
-					    <td>${board.writer}</td>
-					    <td>${board.regdate}</td>
-					    <td>${board.viewcnt}</td>
-					  </tr>
-				  	</c:forEach>
-			  	</tbody>
-			</table>		
+			<form  method="post">
+				<div class="form-group">
+					<label for = "title">제목</label>
+					<input class="form-control" name="title" id="title" required="required"/>
+				</div>
+				<div class="form-group">
+					<label class="writer">작성자</label>
+					<input class="form-control" name="writer" id="writer" required="required"/>
+				</div>
+				<div class="form-group">
+					<label class="content">내용</label>
+					<textarea class="form-control" name="content" id="content" rows="2" required="required"></textarea>
+				</div>
+			</form>
+			<div class="form-group">
+				<button class="btn btn-success" type="submit">등록</button>
+				<button class="btn btn-warning" type="reset">목록보기</button>	
+			</div>
 		</div>
 	</div>
+	
 
-
-</body>
+	
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$("button[type='submit']").click(function(event) {
+			$("form").submit();
+						
+		});
+		
+		$("button[type='reset']").click(function() {
+			location.href="../question/listall";
+		});
+			
+	});
+	</script>
+	</body>
 </html>

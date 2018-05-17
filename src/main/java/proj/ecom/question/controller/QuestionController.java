@@ -5,7 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import proj.ecom.question.domain.QuestionDTO;
 import proj.ecom.question.service.QuestionService_Interface;
 
 
@@ -15,11 +17,11 @@ public class QuestionController {
 	
 	@Inject
 	private QuestionService_Interface questionService;
-/*	
-	@RequestMapping(value="test", method=RequestMethod.GET)
-	public String list(Model model) {
-		model.addAttribute("qlist", questionService.listAll());
-	return "test";
+	
+	
+	/*	@RequestMapping(value="test", method=RequestMethod.GET)
+	public String writeGet() {
+	return "question/test";
 	}
 */
 	
@@ -31,6 +33,23 @@ public class QuestionController {
 		
 	return "main";
 	}
+   
 	
+	/*글 작성 UI*/
+	@RequestMapping(value="write", method=RequestMethod.GET)
+	public String createGet(Model model) {
+	 model.addAttribute("content", "../views/question/writeQuestionView.jsp");
+		
+	return "main";
+	}
+	
+	/*글 작성 save*/
+	@RequestMapping(value="write", method=RequestMethod.POST)
+	public String createPost(QuestionDTO dto) {
+		questionService.create(dto);
+		
+	return "redirect:/question/listall";
+	}
+
 
 }
