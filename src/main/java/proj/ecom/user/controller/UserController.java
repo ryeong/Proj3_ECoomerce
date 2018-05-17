@@ -47,6 +47,7 @@ public class UserController {
 			
 		} else {//로그인 성공
 			session.setAttribute("login",user_dto);
+			model.addAttribute("msg", "로그인에 성공하셨습니다!");
 			return "main" ;
 		}
 

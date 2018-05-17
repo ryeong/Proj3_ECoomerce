@@ -115,9 +115,11 @@
 						
 						<!-- 로그인 했을 때 보여지는 페이지-->
 						<c:if test="${login ne null }">
+							<c:if test = "${msg ne null}"> 
 								<script type="text/javascript">
-									alert("로그인 성공!");
+									alert("${msg}");
 								</script>
+							</c:if> 
 							<jsp:include page="../views/user/loginSuccessView.jsp"></jsp:include>
 						</c:if>
 					</div>
