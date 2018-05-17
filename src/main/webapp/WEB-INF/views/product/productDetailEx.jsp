@@ -15,19 +15,41 @@
 	</head>
 	<body>
 		<form action="/payment/addToCart" method="post">
-			<input type = "hidden" name = "cart_id" value ="5">
-			<input type = "hidden" name = "cart_product_quantity" value ="1">
-			<input type = "hidden" name = "cart_product_id" value ="10">
-			<input type = "hidden" name = "cart_product_size" value ="210">
+			<input type = "hidden" name = "cart_id" value ="10" class = "cart_id">
+			<input type = "hidden" name = "cart_product_quantity" value ="1" class = "cart_product_quantity">
+			<input type = "hidden" name = "cart_product_id" value ="10" class = "cart_product_id">
+			<input type = "hidden" name = "cart_product_size" value ="210" class = "cart_product_size">
 			
 			<button type="submit" class="btn btn_addToCart">장바구니 추가</button>
-			<button type="submit" class="btn btn_orderProduct" formaction="/payment/orderProduct" formmethod="post">구매하기</button>
+			<button type="submit" class="btn btn_orderProduct" formaction="/payment/moveToOrderPage" formmethod="post">구매하기</button>
 		</form>
 		
 		<script type="text/javascript">
 			$(".btn_addToCart").on("click",function(){
-				$("input")
+				var cart_id = $("input")[0].value;
+				var cart_product_quantity = $("input")[1].value;
+				var cart_product_id = $("input")[2].value;
+				var cart_product_size = $("input")[3].value;
+				
+				$.ajax({
+					type: "post",
+					url: "/payment/addToCart",
+					dataType: "text",
+					data:{
+						cart_id : cart_id,
+						cart_product_quantity : cart_product_quantity,
+						cart_product_id : cart_product_id,
+						cart_product_size : cart_product_size
+					},
+					success: function(result){
+						if(result == "ADDTOCART_SUCCESS"){
+							alert("장바구니에 추가되었습니다!")
+						}
+					}
+				});
 			});
+			
+
 		</script>
 	</body>
 </html>

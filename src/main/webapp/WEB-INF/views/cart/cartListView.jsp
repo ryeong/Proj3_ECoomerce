@@ -32,7 +32,7 @@
                 </tr>
               </thead>
               <tbody>         
-              	<c:forEach items="${cart_list}" var="cart_dto">
+              	<c:forEach items="${cart_list}" var="cart_dto" varStatus="status">
 	              		<tr>       
 	                    	<td colspan="2" class = "product_img">
 	                        	<input type = "hidden" value="${cart_dto.cart_id}">
@@ -40,22 +40,21 @@
 	                            <a href ="#"><img class = "img" src="${cart_dto.product_image}" alt="제품 사진" width="100px" height="100px"></a> 
 	                        <td colspan="2" class = "product_name"> <a href = "#">${cart_dto.product_name}</a></td>
 	                        <td class = "product_opt">${cart_dto.cart_product_size}</td>
-	                        <td class = "product_price">${cart_dto.product_price} 원</td>
+	                        <td class = "product_price">
+	                        	<input type = "hidden" class = "product_price_input" value = "${cart_dto.product_price}">
+	                        	${cart_dto.product_price} 원
+	                        </td>
 	                        <td>
 	                            <input type = "number" size="3" maxlength="3" class = "product_num" value = "${cart_dto.cart_product_quantity}"> 
 		                		<input type = "hidden" value = "${cart_dto.product_id}">
 		                		<button type="button" class="btn btn_modify">변경</button>
 	                        </td> 	
 	                        <td class = "product_sum">
-		                           <%--  <script>
-		                            	var a = $(".product_num").val();
-		                            	var b = $(".product_price").text();		                           
-		                            	console.log(a);
-		                            	console.log(b);
-		                            	console.log(sum(a,b));
-		                            </script>원 --%> 
+	                        	 <input class = "index" type = "hidden" value = "${status.index}">
+		                         <span class = "product_sum_span"></span>
+		                         원 
 		                   		<input type = "hidden" value = "${cart_dto.cart_id}"> 
-			                	<button type="button" class="btn btn_delete">삭제</button>
+			                	<button type="button" class="btn btn_delete">삭제</button>			                	
 	                    	</td>
 	                	</tr> 
               	</c:forEach>  
@@ -176,10 +175,16 @@
 			            });
 				}
 				
-				function sum(a,b){
-					return a * b;
-				}
+				$(".index").each(function(){
+	          		var index = $("this")[0].value;
+	          		console.log(index);
+	                var a = $(".product_num")[index].value;
+	                var b = $(".product_price_input")[index].value;		                           		
+	    			$(".product_sum_span")[index].innerHTML = a * b;
+	          	});       	
           	});
-          </script>
+        	
+          		
+    	</script>
     </body>
 </html>
