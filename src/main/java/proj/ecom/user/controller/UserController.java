@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import proj.ecom.user.domain.UserDTO;
 import proj.ecom.user.service.UserService_Interface;
 
@@ -37,16 +39,17 @@ public class UserController {
 	
 	/*로그인*/
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String loginCheck(UserDTO udto,HttpSession session, Model model) {
+	public String loginCheck(UserDTO udto,HttpSession session, Model model, RedirectAttributes rttr) {
 		UserDTO user_dto = userService.loginCheck(udto);
-		if(user_dto.getUser_id() != null) { //로그인에 성공했을 시 
-			session.setAttribute("login",user_dto);
+		if(user_dto == null) { //로그인 실패
+			rttr.addFlashAttribute("isSuccess", "false");
+			return"redirect:/";
 			
+		} else {//로그인 성공
+			session.setAttribute("login",user_dto);
+			return "main" ;
 		}
-		//System.out.println((String) session.getAttribute("user_id"));
-		//System.out.println(user_id);
-		return "main" ;
-		
+
 		
 	}
 	
