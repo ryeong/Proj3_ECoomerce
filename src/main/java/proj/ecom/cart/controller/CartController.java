@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import proj.ecom.cart.domain.CartDTO;
 import proj.ecom.cart.service.CartService_Interface;
+import proj.ecom.user.domain.UserDTO;
 
 @Controller
 @RequestMapping("cart")
@@ -24,11 +25,8 @@ public class CartController {
 	/*장바구니 리스트 보기(model사용)*/
 	@RequestMapping("/cartList")
 	public String cartList(HttpSession session, Model m) {
-		//UserDTO user_dto = (UserDTO)session.getAttribute("login");
-		//m.addAttribute("cart_list",cart_service.cartList(user_dto.getUser_id()));
-		/*test용 id*/
-		String user_id = "test1";
-		m.addAttribute("cart_list",cart_service.cartList(user_id));
+		UserDTO user_dto = (UserDTO)session.getAttribute("login");
+		m.addAttribute("cart_list",cart_service.cartList(user_dto.getUser_id()));
 		m.addAttribute("content", "../views/cart/cartListView.jsp");
 		return "main";
 	}
@@ -36,10 +34,8 @@ public class CartController {
 	/*장바구니 리스트 보기(Ajax)*/
 	@RequestMapping("/getAllCartList")
 	public ResponseEntity<List<CartDTO>> cartList(HttpSession session) {	
-		//UserDTO user_dto = (UserDTO)session.getAttribute("login");
-		//m.addAttribute("cart_list",cart_service.cartList(user_dto.getUser_id()));
-		/*test용 id*/
-		String user_id = "test1";
+		UserDTO user_dto = (UserDTO)session.getAttribute("login");
+		String user_id = user_dto.getUser_id();
 		ResponseEntity<List<CartDTO>> entity;
 		try {	
 			 entity = new ResponseEntity<List<CartDTO>>(cart_service.cartList(user_id), HttpStatus.OK);
@@ -83,9 +79,9 @@ public class CartController {
 	
 	/*user_id와 cart_id를 가지고 있는 map객체 반환*/
 	public HashMap<String, Object> returnUserIdAndCartId(HttpSession session, String cart_id){
-		/*UserDTO user_dto = (UserDTO)session.getAttribute("login"); //나중에 static으로 바꾸기
-		String user_id = user_dto.getUser_id();*/
-		String user_id = "test1";
+		UserDTO user_dto = (UserDTO)session.getAttribute("login"); //나중에 static으로 바꾸기
+		String user_id = user_dto.getUser_id();
+
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("user_id", user_id);
 		map.put("cart_id", cart_id);
@@ -94,10 +90,10 @@ public class CartController {
 	
 	/*user_id와 cart_id, product_num를 가지고 있는 map객체 반환*/
 	public HashMap<String, Object> returnUserIdAndCartId(HttpSession session, String cart_id, String product_quantity){
-		/*UserDTO user_dto = (UserDTO)session.getAttribute("login"); //나중에 static으로 바꾸기
-		String user_id = user_dto.getUser_id();*/
+		UserDTO user_dto = (UserDTO)session.getAttribute("login"); //나중에 static으로 바꾸기
+		String user_id = user_dto.getUser_id();
 		Map<String, Object> map = new HashMap<String, Object>();
-		String user_id = "test1";
+
 		map.put("user_id", user_id);
 		map.put("cart_id", cart_id);
 		map.put("product_quantity", product_quantity);

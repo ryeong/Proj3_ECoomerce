@@ -83,7 +83,13 @@
 				clear: left;
 				color: black;
 			}
+			
+			span {
+				font-size: medium;
+				font-weight: bold;
+			}
 		</style>
+		
 	</head>
 
 	<body>

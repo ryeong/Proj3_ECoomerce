@@ -1,7 +1,9 @@
 package proj.ecom.payment.dao;
 
-import java.util.HashMap;
+import java.util.List;
+
+import proj.ecom.cart.domain.CartDTO;
 
 public interface PaymentDAO_Interface {
-	public void insertProduct(HashMap<String, Object> payment_map);
+	public void insertProduct(List<CartDTO> payment_list, String payment_orderNum);
 }

@@ -4,7 +4,7 @@ import proj.ecom.product.domain.ProductDTO;
 
 public class CartDTO extends ProductDTO{
 	private static final long serialVersionUID = 1L;
-	private String cart_id;
+	private int cart_id;
 	private String cart_userId;
 	private int cart_Status;
 	private int cart_product_quantity;
@@ -15,7 +15,7 @@ public class CartDTO extends ProductDTO{
 		super();
 	}
 
-	public CartDTO(String cart_id, String cart_userId, int cart_Status, int cart_product_quantity, int cart_product_id,
+	public CartDTO(int cart_id, String cart_userId, int cart_Status, int cart_product_quantity, int cart_product_id,
 			String cart_product_size) {
 		super();
 		this.cart_id = cart_id;
@@ -50,10 +50,10 @@ public class CartDTO extends ProductDTO{
 		this.cart_product_size = cart_product_size;
 	}
 
-	public String getCart_id() {
+	public int getCart_id() {
 		return cart_id;
 	}
-	public void setCart_id(String cart_id) {
+	public void setCart_id(int cart_id) {
 		this.cart_id = cart_id;
 	}
 	public String getCart_userId() {
@@ -71,5 +71,12 @@ public class CartDTO extends ProductDTO{
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	@Override
+	public String toString() {
+		return "CartDTO [cart_id=" + cart_id + "]";
 	}	
+	
+	
 }

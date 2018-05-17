@@ -31,4 +31,9 @@ public class CartService implements CartService_Interface{
 		cart_dao.deleteCart(map);	
 	}
 
+	@Override
+	public void updateStatus(String user_id) {
+		cart_dao.updateStatus(user_id);
+	}
+
 }

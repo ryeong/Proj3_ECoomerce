@@ -15,14 +15,14 @@
     </head>
     <body>
         <div class="container" style = "width :946px; " >
-            <div id = "topImage">
+            <div id = "topImage1">
             	<img alt="장바구니" src="/resources/image/cart_topTitle01.jpg" style = "width :910px">
             </div>
             
             <!-- <h3>[장바구니](el태그.수량)</h3> -->
             <!-- 테스트용 코드 -->
             <h3>[장바구니 목록]</h3>            
-            <table class="table table-condensed" style = "height: 700px;">
+            <table class="table table-condensed">
               <thead>
                 <tr align="center" class="info">
                   <th colspan="4" ><input type = "checkbox" id="allCheck">상품</th>
@@ -38,8 +38,7 @@
 	                    	<td colspan="2" class = "product_img">
 	                        	<input type = "hidden" value="${cart_dto.cart_id}">
 	                           	<input class = "checkbox" type = "checkbox" value="${cart_dto.product_id}">
-	                            <a href ="#"><img src="${cart_dto.product_image}" alt="제품 사진" width="100px" height="100px"></a>
-	                       	</td>
+	                            <a href ="#"><img src="${cart_dto.product_image}" alt="제품 사진" width="100px" height="100px"></a> 
 	                        <td colspan="2" class = "product_name"> <a href = "#">${cart_dto.product_name}</a></td>
 	                        <td class = "product_opt">${cart_dto.cart_product_size}</td>
 	                        <td class = "product_price">${cart_dto.product_price} 원</td>
@@ -61,37 +60,6 @@
 	                    	</td>
 	                	</tr> 
               	</c:forEach>  
-           
-           
-           
-              	<!-- 연습용 코드 -->
-             <%--  	<c:forEach begin="0" end="10" varStatus="status">	              
-	              	<tr >
-	                	<td colspan="2" class = "product_img">
-	                		<input type = "hidden" name ="cart_id" value="${status.index}">
-	                		<input class = "checkbox" type = "checkbox" value="ddd">
-	                		<a href = "#">
-	                			<img src="" alt="제품 사진" width="200px" height="200px">
-	                		</a>
-	                	</td>
-	                	<td colspan="2" class = "product_name">
-	                		<a href = "#">sdjhsafsafssssssssssssssssssal</a>
-	                	</td>
-	                	<td class = "product_opt">250</td>
-	                	<td class = "product_price">2000 원</td>	              
-	                	<td>
-	                		<input type = "number" name = "product_num" value = "${status.index}" size="3" maxlength="3" class = "product_num"> 
-	                		<input type = "hidden" name = "cart_id" value = "11111">
-	                		<button type="button" class="btn btn_modify">변경</button>
-	                	</td> 	
-	                	
-	                	<td class = "product_sum">
-	                		가격 * 수량  
-	                		<input type = "hidden" name = "cart_id" value = "cart_id">
-	                		<button type="button" class="btn btn_delete">삭제</button>
-	                	</td>
-	                </tr>                
-                </c:forEach>   --%>  
                 
            		</tbody>
             </table>
@@ -155,8 +123,6 @@
 			
 				function addBtnEvent(){
 					$(".btn_modify").on("click",function (event) {          	        
-		            	/*console.log(product_id);
-		                console.log(product_num); */
 		                
 		                $.ajax({
 		    				type: "post",

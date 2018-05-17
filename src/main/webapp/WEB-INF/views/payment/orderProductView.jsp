@@ -15,14 +15,14 @@
 	</head>
 	<body>
 		 <div class="container" style = "width :946px; " >
-            <div id = "topImage">
+            <div id = "topImage3">
             	<img alt="주문/결제" src="/resources/image/cart_topTitle02.jpg" style = "width :910px">
             </div>
             
             <!-- <h3>[장바구니](el태그.수량)</h3> -->
             <!-- 테스트용 코드 -->
             <h3>[주문내역]</h3>            
-            <table class="table table-condensed" style = "height: 700px;">
+            <table class="table table-condensed">
               <thead>
                 <tr align="center" class="info">
                   <th colspan="4">상품</th>
@@ -32,31 +32,7 @@
                   <th>합계</th>
                 </tr>
               </thead>
-              <tbody>
-              		<%-- <tr>       
-                            <td colspan="2" class = "product_img">
-                            	<input type = "checkbox" value="${제품 번호}">
-                            	<a href =""><img src="${cart_dto.product_dto.product_img}" alt="제품 사진" width="100px" height="100px"></a>
-                            </td>
-                            <td colspan="2" class = "product_name"> <a href = "#">${cart_dto.product_dto.product_name}</a></td>
-                            <td class = "product_opt">${cart_dto.product_dto.product_size}</td>
-                            <td class = "product_price">${cart_dto.product_dto.product_price} 원</td>
-                            <td><input type = "number" value = "${cart_dto.cart_num}" size="3" maxlength="3" class = "product_num"> <button type="button" class="btn btn_modify">변경</button></td> 	
-                            <td class = "product_sum"><script>${cart_dto.cart_price} * ${cart_dto.cart_num}</script>  <button type="button" class="btn btn_delete">삭제</button></td>
-                	</tr> 
-                	<tr >
-	                	<td colspan="2" class = "product_img">	               
-	                		<img src="${cart_dto.product_dto.product_img}" alt="제품 사진" width="100px" height="100px">
-	                	</td>
-	                	<td colspan="2" class = "product_name">
-	                		<a href = "#">${cart_dto.product_dto.product_name}</a>
-	                	</td>
-	                	<td class = "product_opt">${cart_dto.product_dto.product_size}</td>
-	                	<td class = "product_price">${cart_dto.product_dto.product_price} 원</td>
-	                	<td>${cart_dto.cart_num}</td> 	
-	                	<td class = "product_sum"><script>${cart_dto.cart_price} * ${cart_dto.cart_num}</script> </td>
-	                </tr>
-                	--%>
+              <tbody>        
                 	<c:forEach items="${cart_list}" var="cart_dto">
 	              		<tr>       
 	                    	<td colspan="2" class = "product_img">
@@ -81,22 +57,6 @@
 	                    	</td>
 	                	</tr> 
               	</c:forEach>
-              	
-	              <%-- 	<!-- 연습용 코드 -->
-	              	<c:forEach begin="0" end="10">
-		              	<tr >
-		                	<td colspan="2" class = "product_img">	               
-		                		<img src="" alt="제품 사진" width="200px" height="200px">
-		                	</td>
-		                	<td colspan="2" class = "product_name">
-		                		<a href = "#">sdjhsafsafssssssssssssssssssal</a>
-		                	</td>
-		                	<td class = "product_opt">250</td>
-		                	<td class = "product_price">2000 원</td>
-		                	<td>1</td> 	
-		                	<td class = "product_sum">가격 * 수량 </td>
-		                </tr>
-	                </c:forEach>      --%>       
                 </tbody>
             </table>
             
@@ -106,15 +66,13 @@
 	              <thead>
 	                <tr align="center" class="info">
 	                  <th>주문자</th>
-	                  <th>휴대폰</th>
-	                  <th>이메일</th>              
+	                  <th>휴대폰</th>           
 	                </tr>
 	              </thead>
 	              <tbody>
 		         	  <tr >
-		              	<td>${session.user_name}</td>
-		              	<td>${session.user_phoneNumber}</td>
-		              	<td>${session.user_email}</td>	
+		              	<td>${login.user_name}</td>
+		              	<td>${login.user_phonenumber}</td>
 		              </tr>          
 	            </table>   
 	        </div>

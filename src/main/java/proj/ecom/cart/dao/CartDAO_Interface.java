@@ -15,4 +15,6 @@ public interface CartDAO_Interface {
 
 	void deleteCart(Map<String, Object> map);
 
+	void updateStatus(String user_id);
+
 }
