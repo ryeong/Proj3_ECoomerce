@@ -105,11 +105,19 @@
 					<div id = "loginForm" style = "height: 300px">
 						<!-- 기본값: 로그인 하지 않았거나 로그아웃 및 회원탈퇴했을 때 보여지는 페이지-->
 						<c:if test="${login eq null }">
-							<jsp:include page="../views/user/login.jsp"></jsp:include>
+							<c:if test="${isSuccess eq 'false'}">
+								<script type="text/javascript">
+									alert("로그인 실패! ID와 비밀번호를 확인해 주세요");
+								</script>
+							</c:if>
+							<jsp:include page="../views/user/login.jsp"></jsp:include> 
 						</c:if>
 						
 						<!-- 로그인 했을 때 보여지는 페이지-->
 						<c:if test="${login ne null }">
+								<script type="text/javascript">
+									alert("로그인 성공!");
+								</script>
 							<jsp:include page="../views/user/loginSuccessView.jsp"></jsp:include>
 						</c:if>
 					</div>
