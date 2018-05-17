@@ -28,6 +28,10 @@
 						<input type="password" class="form-control" placeholder="비밀번호"
 							name="user_pw" maxlength="15">
 					</div>
+<!-- 					<div>
+						<label style="float: right;">아이디저장하기</label>
+						<input style="float: right;" type=checkbox name="idSave" value="idSave">
+					</div> -->
 					
 					<input type="submit" class="btn btn-primary form-control"  value="로그인">
 				</form>
