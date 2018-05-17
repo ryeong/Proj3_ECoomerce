@@ -31,8 +31,7 @@ public class QuestionDAO implements QuestionDAO_Interface{
 
 	@Override
 	public List<QuestionDTO> listAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectList(NAMESPACE+".listAll");
 	}
 
 	@Override

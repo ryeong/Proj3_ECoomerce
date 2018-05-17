@@ -2,11 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="Question">
+<mapper namespace="QuestionMapper">
 
 	<select id="listAll" resultType="proj.ecom.question.domain.QuestionDTO">
-		select * from ECOMMERCE_QUESTION order by
-		bno desc
+		select * from ECOMMERCE_QUESTION order by bno desc
 	</select>
 
 	<select id="getBno" resultType="Integer">
@@ -14,8 +13,7 @@
 	</select>
 
 	<insert id="insert">
-		insert into ECOMMERCE_QUESTION (bno, title, content, writer,
-		regdate)
+		insert into ECOMMERCE_QUESTION (bno, title, content, writer, regdate)
 		values(#{bno}, #{title}, #{content}, #{writer}, sysdate)
 	</insert>
 

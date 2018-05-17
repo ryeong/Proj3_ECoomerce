@@ -1,18 +1,36 @@
 package proj.ecom.question.controller;
 
+import javax.inject.Inject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import proj.ecom.question.service.QuestionService_Interface;
 
 
 @Controller
 @RequestMapping("question")
 public class QuestionController {
 	
+	@Inject
+	private QuestionService_Interface questionService;
+/*	
+	@RequestMapping(value="test", method=RequestMethod.GET)
+	public String list(Model model) {
+		model.addAttribute("qlist", questionService.listAll());
+	return "test";
+	}
+*/
+	
+	/*글 전체목록 보기*/
+	@RequestMapping(value="listall", method=RequestMethod.GET)
+	public String listAll(Model model) {
+		model.addAttribute("content", "../views/question/listQuestionView.jsp");
+		model.addAttribute("qlist", questionService.listAll());
+		
+	return "main";
+	}
 	
 
 }

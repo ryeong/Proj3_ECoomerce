@@ -29,7 +29,7 @@ public class QuestionService implements QuestionService_Interface{
 	@Override
 	public List<QuestionDTO> listAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return questionDao.listAll();
 	}
 
 	@Override
