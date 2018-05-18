@@ -11,15 +11,27 @@ import proj.ecom.question.domain.QuestionDTO;
 
 @Repository
 public class QuestionDAO implements QuestionDAO_Interface{
+	
 	static final String NAMESPACE = "QuestionMapper";
 
 	@Inject
 	private SqlSession sqlSession;
+
 	
+	@Override
+	public Integer getBno() {
+		Integer bno = sqlSession.selectOne(NAMESPACE+".getBno");
+		
+		if(bno != null) bno = bno+1;
+		else bno = 1;
+		
+		return bno;
+	}
 	
 	@Override
 	public void create(QuestionDTO dto) {
-		// TODO Auto-generated method stub
+		dto.setBno(getBno());
+		sqlSession.insert(NAMESPACE+".insert", dto);
 		
 	}
 
@@ -46,9 +58,5 @@ public class QuestionDAO implements QuestionDAO_Interface{
 		
 	}
 
-	@Override
-	public Integer getBno() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 }

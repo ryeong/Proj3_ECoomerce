@@ -2,7 +2,8 @@ package proj.ecom.question.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Service;
 
 import proj.ecom.question.dao.QuestionDAO_Interface;
@@ -11,13 +12,12 @@ import proj.ecom.question.domain.QuestionDTO;
 @Service
 public class QuestionService implements QuestionService_Interface{
 
-	@Autowired
+	@Inject
 	private QuestionDAO_Interface questionDao;
 	
 	@Override
 	public void create(QuestionDTO dto) {
-		// TODO Auto-generated method stub
-		
+		questionDao.create(dto);
 	}
 
 	@Override

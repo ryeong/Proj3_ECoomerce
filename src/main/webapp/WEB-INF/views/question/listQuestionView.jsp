@@ -41,10 +41,11 @@
 		</div>
 		<div class="row">
 			<div class = "col-xs-3">
-				<a href = "/question/create" class="btn btn-info">글쓰기</a>
+				<a href = "/question/write" class="btn btn-info">글쓰기</a>
 			</div>
 		</div>
 	</div>
+
 
 
 </body>

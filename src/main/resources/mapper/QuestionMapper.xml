@@ -4,7 +4,7 @@
 
 <mapper namespace="QuestionMapper">
 
-	<select id="listAll" resultType="proj.ecom.question.domain.QuestionDTO">
+	<select id="listAll" resultType="QuestionDTO">
 		select * from ECOMMERCE_QUESTION order by bno desc
 	</select>
 
@@ -12,14 +12,13 @@
 		select max(bno) from ECOMMERCE_QUESTION
 	</select>
 
-	<insert id="insert">
-		insert into ECOMMERCE_QUESTION (bno, title, content, writer, regdate)
-		values(#{bno}, #{title}, #{content}, #{writer}, sysdate)
-	</insert>
+  	<insert id="insert">
+		Insert into ECOMMERCE_QUESTION (BNO,TITLE, CONTENT, WRITER) 
+		values (#{bno}, #{title}, #{content}, #{writer})
+  	</insert>
 
-	<select id="read" resultType="proj.ecom.question.domain.QuestionDTO">
-		select * from ECOMMERCE_QUESTION where bno =
-		#{bno}
+	<select id="read" resultType="QuestionDTO">
+		select * from ECOMMERCE_QUESTION where bno=#{bno}
 	</select>
 
 	<update id="update">

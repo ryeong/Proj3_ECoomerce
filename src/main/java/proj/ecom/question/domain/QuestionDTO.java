@@ -88,6 +88,8 @@ public class QuestionDTO implements Serializable{
 		this.viewcnt = viewcnt;
 	}
 
+
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -109,7 +111,7 @@ public class QuestionDTO implements Serializable{
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
