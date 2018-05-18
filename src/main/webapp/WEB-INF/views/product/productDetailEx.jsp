@@ -20,6 +20,7 @@
 			<input type = "hidden" name = "cart_product_id" value ="10" class = "cart_product_id">
 			<input type = "hidden" name = "cart_product_size" value ="210" class = "cart_product_size">
 			<input type = "hidden" name = "cart_user_id" value ="test1" class = "cart_user_id">
+
 			
 			<button type="submit" class="btn btn_addToCart">장바구니 추가</button>
 			<button type="submit" class="btn btn_orderProduct" formaction="/payment/moveToOrderPage" formmethod="post">구매하기</button>

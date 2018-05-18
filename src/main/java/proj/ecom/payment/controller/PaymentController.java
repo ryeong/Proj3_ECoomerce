@@ -77,7 +77,7 @@ public class PaymentController {
 	public ResponseEntity<String> addToCartPost(CartDTO cart_dto) {
 		ResponseEntity<String> entity;
 		try {
-			cartService.insertCart(cart_dto);
+			//cartService.insertCart(cart_dto);
 			entity = new ResponseEntity<String>("ADDTOCART_SUCCESS",HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
