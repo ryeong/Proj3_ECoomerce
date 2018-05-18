@@ -10,9 +10,7 @@
 	<title>Home</title>
 </head>
 <body>
-<h1>
-	맨 처음 보여지는 페이지입니다. 다 완성되고 난 후에는 전체보기 페이지가 기본값으로 나오면 될 것 같습니다. 
-</h1>
-<P>  The time on the server is ${serverTime}. </P>
+	<h1 style = "text-align: center;">[환영합니다]</h1>
+	<img src = "/resources/main_door.jpg" style = "margin: 100px; margin-left: 150px;" alt = "쇼핑이미지">
 </body>
 </html>

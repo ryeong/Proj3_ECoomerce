@@ -65,13 +65,14 @@ public class PaymentController {
 		return formattedDate;
 	}
 	
-	//자세히보기 에서 장바구니로 이동
+	//자세히보기로 이동(장바구니에 넣기 구현하기 위한 코드)
 	@RequestMapping(value="addToCart", method=RequestMethod.GET)
 	public String addToCartGet(Model model) {
 		model.addAttribute("content", "../views/product/productDetailEx.jsp");	
 		return "main";
 	}
 	
+	//장바구니 테이블에 상품 정보 넣는 메소드
 	@RequestMapping(value="addToCart", method=RequestMethod.POST)
 	public ResponseEntity<String> addToCartPost(CartDTO cart_dto) {
 		ResponseEntity<String> entity;
@@ -84,4 +85,12 @@ public class PaymentController {
 		}
 		return entity;
 	}
+	
+	//결제창으로 이동시켜주는 메소드
+		@RequestMapping(value="moveToOrderPage", method=RequestMethod.POST)
+		public String moveToOrderPage(CartDTO cart_dto) {
+			cartService.insertCart(cart_dto);
+			
+			return "redirect:/payment/orderProduct";
+		}
 }

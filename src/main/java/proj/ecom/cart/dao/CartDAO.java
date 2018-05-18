@@ -43,6 +43,7 @@ public class CartDAO implements CartDAO_Interface{
 
 	@Override
 	public void insertCart(CartDTO cart_dto) {
+		System.out.println(cart_dto);
 		sqlSession.insert(NAMESPACE +".insertCart",cart_dto);
 	}
 

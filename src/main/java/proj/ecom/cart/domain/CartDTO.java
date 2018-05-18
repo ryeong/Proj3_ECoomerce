@@ -75,8 +75,12 @@ public class CartDTO extends ProductDTO{
 
 	@Override
 	public String toString() {
-		return "CartDTO [cart_id=" + cart_id + "]";
-	}	
+		return "CartDTO [cart_id=" + cart_id + ", cart_userId=" + cart_userId + ", cart_Status=" + cart_Status
+				+ ", cart_product_quantity=" + cart_product_quantity + ", cart_product_id=" + cart_product_id
+				+ ", cart_product_size=" + cart_product_size + "]";
+	}
+
+	
 	
 	
 }
