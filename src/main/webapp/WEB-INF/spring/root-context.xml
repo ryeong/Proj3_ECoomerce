@@ -16,8 +16,13 @@
 		
 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
 		<property value="oracle.jdbc.driver.OracleDriver" name="driverClassName"></property>
+<<<<<<< HEAD
 		<!-- <property value="jdbc:oracle:thin:@localhost:1522:orcl" name="url"></property>  -->
 		<property value="jdbc:oracle:thin:@211.183.7.23:1522:orcl" name="url"></property>
+=======
+		<property value="jdbc:oracle:thin:@211.183.7.23:1522:orcl" name="url"></property> 
+		<!-- <property value="jdbc:oracle:thin:@localhost:1521:xe" name="url"></property>  --> 
+>>>>>>> 23ea24a505582fa7ed7ca7665cd8cfca9c12b2ac
 		<property value="proj" name="username"></property>
 		<property value="proj" name="password"></property>	
 	</bean>
