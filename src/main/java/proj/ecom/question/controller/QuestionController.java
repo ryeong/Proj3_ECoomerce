@@ -51,7 +51,7 @@ public class QuestionController {
 	return "redirect:/question/listall";
 	}
 
-	/*글 자세히 보기*/
+	/*글 자세히 보기s*/
 	@RequestMapping("read")
 	public String read(@RequestParam("bno") int bno, Model model) {
 		model.addAttribute("content", "../views/question/readQuestionView.jsp");
