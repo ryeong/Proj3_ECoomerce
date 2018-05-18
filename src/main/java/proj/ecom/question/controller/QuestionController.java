@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import proj.ecom.question.domain.QuestionDTO;
 import proj.ecom.question.service.QuestionService_Interface;
@@ -50,5 +51,14 @@ public class QuestionController {
 	return "redirect:/question/listall";
 	}
 
+	/*글 자세히 보기*/
+	@RequestMapping("read")
+	public String read(@RequestParam("bno") int bno, Model model) {
+		model.addAttribute("content", "../views/question/readQuestionView.jsp");
+		model.addAttribute("dto", questionService.read(bno));
+	
+	return "main";
+	}
+	
 
 }

@@ -38,7 +38,7 @@ public class QuestionDAO implements QuestionDAO_Interface{
 	@Override
 	public QuestionDTO read(int bno) {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne(NAMESPACE+".read", bno);
 	}
 
 	@Override

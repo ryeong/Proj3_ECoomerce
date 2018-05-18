@@ -23,7 +23,7 @@ public class QuestionService implements QuestionService_Interface{
 	@Override
 	public QuestionDTO read(int bno) {
 		// TODO Auto-generated method stub
-		return null;
+		return questionDao.read(bno);
 	}
 
 	@Override
