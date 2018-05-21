@@ -35,7 +35,7 @@ public class CartDAO implements CartDAO_Interface{
 		sqlSession.update(NAMESPACE + ".deleteCart",map);
 	}
 
-	//
+
 	@Override
 	public void updateStatus(String user_id) {
 		sqlSession.update(NAMESPACE + ".updateStatus",user_id); 
