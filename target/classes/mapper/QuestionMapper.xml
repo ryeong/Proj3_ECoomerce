@@ -2,18 +2,34 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="Question">
+<mapper namespace="QuestionMapper">
 
-	<!-- <select id="listDao" resultType="spring.mybatis.dto.ContentDto">
-		SELECT * FROM Mybatis_Bbs ORDER BY id DESC
+	<select id="listAll" resultType="QuestionDTO">
+		select * from ECOMMERCE_QUESTION order by bno desc
 	</select>
-	
-	<insert id="writeDao">
-		INSERT INTO Mybatis_Bbs (id, writer, content) VALUES (Mybatis_Bbs_SEQ.NEXTVAL, #{param1}, #{param2})
-	</insert>
-	
-	<delete id="deleteDao">
-		DELETE FROM Mybatis_Bbs WHERE id = #{param1}
-	</delete> -->
-	
+
+	<select id="getBno" resultType="Integer">
+		select max(bno) from ECOMMERCE_QUESTION
+	</select>
+
+  	<insert id="insert">
+		Insert into ECOMMERCE_QUESTION (BNO,TITLE, CONTENT, WRITER) 
+		values (#{bno}, #{title}, #{content}, #{writer})
+  	</insert>
+
+	<select id="read" resultType="QuestionDTO">
+		select * from ECOMMERCE_QUESTION where bno=#{bno}
+	</select>
+
+	<update id="update">
+		update tbl_board set title=#{title},
+		content=#{content}, writer=#{writer},
+		updatedate=sysdate
+		where
+		bno=#{bno}
+	</update>
+
+	<delete id="delete">
+		delete from ECOMMERCE_QUESTION where bno=#{bno}
+	</delete>
 </mapper>

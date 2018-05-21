@@ -3,6 +3,18 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="ProductMapper">
+	<!-- 상품 리스트 보기 -->
+	<select id="listProduct" resultType="proj.ecom.product.domain.ProductDTO">
+		select * from ecommerce_product  where product_itemType=#{product_itemType} and product_sortType=#{product_sortType} order by product_id desc
+	</select>
+	
+	<!-- 상품 자세히 보기 -->
+	<select id="productDetail" resultType="proj.ecom.product.domain.ProductDTO">
+
+		select * from ecommerce_product where product_id=#{product_id}
+	</select>
+
+
 
 <!-- 	<select id="listDao" resultType="spring.mybatis.dto.ContentDto">
 		SELECT * FROM Mybatis_Bbs ORDER BY id DESC
@@ -15,5 +27,17 @@
 	<delete id="deleteDao">
 		DELETE FROM Mybatis_Bbs WHERE id = #{param1}
 	</delete> -->
+	
+	
+	<!-- <select id="getTotalCount" resultType="Integer">
+		select count(product_id) from product
+	</select> -->
+	
+	<!-- <select id="listProduct" resultType="proj.ecom.product.domain.ProductDTO">		
+		select product_name, product_price, product_image from product WHERE product_itemType=#{product_itemType, jdbcType=INTEGER} and 
+		product_sortType=#{product_sortType, jdbcType=INTEGER} order by product_id desc
+		]]>
+	</select> -->
+	
 	
 </mapper>
