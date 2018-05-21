@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="PaymentMapper">
+	
+	<insert id="insertProduct">
+		insert into ecommerce_payment(payment_id, payment_ordernum, payment_cart_id) values(#{i}, #{payment_ordernum}, #{payment_cart_id})
+	</insert>
+	
+	<!-- <select id="listDao" resultType="spring.mybatis.dto.ContentDto">
+		SELECT * FROM Mybatis_Bbs ORDER BY id DESC
+	</select>
+	
+	<insert id="writeDao">
+		INSERT INTO Mybatis_Bbs (id, writer, content) VALUES (Mybatis_Bbs_SEQ.NEXTVAL, #{param1}, #{param2})
+	</insert>
+	
+	<delete id="deleteDao">
+		DELETE FROM Mybatis_Bbs WHERE id = #{param1}
+	</delete> -->
+	
+</mapper>

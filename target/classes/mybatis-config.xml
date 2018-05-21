@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+	<typeAliases>
+		<typeAlias alias="QuestionDTO" type="proj.ecom.question.domain.QuestionDTO"/>
+	</typeAliases>
+		
+
+	<!-- 
+	<typeAliases>
+ 		<package name="proj.ecom.*.domain"></package>
+ 	</typeAliases>
+
+	 <mappers>
+		<package name = "mapper"/>
+	</mappers>   
+	-->
+	
+	<!-- 
+	<mappers>
+		<mapper resource="mapper/AnswerMapper.xml" />
+		<mapper resource="mapper/QuestionMapper.xml" />
+		<mapper resource="mapper/CartMapper.xml" />
+		<mapper resource="mapper/PaymentMapper.xml" />
+		<mapper resource="mapper/UserMapper.xml" />
+		<mapper resource="mapper/ProductMapper.xml" />
+		<mapper resource="mapper/ReviewMapper.xml" />
+	</mappers> 
+	--> 
+	
+</configuration>
+
+
+
+
+	<!-- 	<properties resource="classpath:db.properties" />-->
+		
+	<!-- <typeAliases>
+		<typeAlias type="proj.ecom.answer.domain.AnswerDTO" alias="AnswerDTO"></typeAlias>
+		<typeAlias type="proj.ecom.question.domain.QuestionDTO" alias="QuestionDTO"></typeAlias>
+		<typeAlias type="proj.ecom.cart.domain.CartDTO" alias="CartDTO"></typeAlias>
+		<typeAlias type="proj.ecom.user.domain.UserDTO" alias="UserDTO"></typeAlias>
+		<typeAlias type="proj.ecom.payment.domain.PaymentDTO" alias="PaymentDTO"></typeAlias>
+		<typeAlias type="proj.ecom.product.domain.ProductDTO" alias="ProductDTO"></typeAlias>
+	</typeAliases> -->
+	
+	<!-- 	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driverClassName}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	 -->
+	<!-- <mappers>
+		<mapper resource="mapper/AnswerMapper.xml" />
+		<mapper resource="mapper/QuestionMapper.xml" />
+		<mapper resource="mapper/CartMapper.xml" />
+		<mapper resource="mapper/PaymentMapper.xml" />
+		<mapper resource="mapper/UserMapper.xml" />
+		<mapper resource="mapper/ProductMapper.xml" />
+		<mapper resource="mapper/ReviewMapper.xml" />
+	</mappers> -->
+
+	<!-- <?xml version="1.0" encoding="UTF-8"?>
+	
+	<!DOCTYPE configuration
+	  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+	<configuration>
+	 	<typeAliases>
+	 		<package name="kr.co.domain"></package>
+	 	</typeAliases>
+	</configuration> -->
