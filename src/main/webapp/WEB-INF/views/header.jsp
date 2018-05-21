@@ -19,7 +19,7 @@
 			<ul id="manuItem" class="nav navbar-nav" style = "width:800px;">
 				<li><a class="active" href="#">마이페이지</a></li>
 				<li><a class="active" href="/cart/cartList">장바구니</a></li>
-				<li><a class="active" href="#">Q&A</a></li>
+				<li><a class="active" href="/question/listall">Q&A</a></li>
 				<li><a class="active" href="#">회원관리</a></li>
 				<li><a class="active" href="#">상품관리</a></li>
 			</ul>
